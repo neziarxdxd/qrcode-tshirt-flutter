@@ -1,3 +1,4 @@
+
 # my_app01
 
 A new Flutter project.
@@ -17,3 +18,10 @@ samples, guidance on mobile development, and a full API reference.
 
 # I just made a simple calculator 
 
+![enter image description here](https://github.com/raizengxd/Flutter_Practice_Repo/blob/master/my_app01/Screenshots/Capture01.PNG)
+
+
+![enter image description here](https://github.com/raizengxd/Flutter_Practice_Repo/blob/master/my_app01/Screenshots/Capture2.PNG)
+
+
+![enter image description here](https://github.com/raizengxd/Flutter_Practice_Repo/blob/master/my_app01/Screenshots/Capture3.PNG)
