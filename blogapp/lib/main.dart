@@ -5,17 +5,40 @@ void main(){
   runApp(
     MaterialApp(
       home:Scaffold(
-        appBar: AppBar(
+        
         backgroundColor:Colors.blueGrey[900],
-        title: Text('BLOG APP'),
+        body:
+         
+           Column(
+            
+            children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top:30.0),
+              child: Center(
+                child: Text('LOGIN')
+              ),
+            ),
+             Padding(
+               padding: EdgeInsets.only(
+                 top: 40.0,
+                 left:16.0,
+                 right:16.0,                 
+               ),
+                
+                child: TextField(               
+                obscureText: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                ),
+            ),
+             )
+
+            ],
+          ),
         ),
-        backgroundColor:Colors.blueGrey[400],
-        body: Image(
-          
-          
-          image: AssetImage('images/diamond.png'),
-        ),  
+        
       ),
-    ),
+    
   );
 }
