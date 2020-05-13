@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'db.dart';
+import 'taskModel.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -28,9 +29,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final textController = TextEditingController();
+  TaskModel currentTask;
+  List <TaskModel>listOFTask;
   @override
   Widget build(BuildContext context) {
-    
+     final TodoHelper _todoHelper = TodoHelper();
     return Scaffold(
       appBar: AppBar(
         
@@ -42,6 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             children:[
               TextField(
+              controller: textController,
+              
               decoration: InputDecoration(
                 border:OutlineInputBorder(),
                 labelText: 'Username'
@@ -61,14 +67,30 @@ class _MyHomePageState extends State<MyHomePage> {
                   Expanded(                    
                     child: RaisedButton(                                  
                       color: Colors.blue,
-                      onPressed: () {},
+                      onPressed: () {
+                         currentTask = TaskModel(name: textController.text);
+                        _todoHelper.insertTask(currentTask);
+
+                      },
                       child: Text("Button"),
                       textColor: Colors.white,
                       
                       
-                    )
-                  ,
-                  ),
+                    ),),
+                    Expanded(                    
+                    child: RaisedButton(                                  
+                      color: Colors.blue,
+                      onPressed: () async {
+                         print(await _todoHelper.getAllTask());
+
+
+
+                      },
+                      child: Text("Button"),
+                      textColor: Colors.white,
+                      
+                      
+                    ),),
                 ],
               )
             ]
