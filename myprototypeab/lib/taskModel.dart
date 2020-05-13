@@ -13,4 +13,8 @@ class TaskModel{
       columnName : this.name
     };
   }
+  @override
+  String toString() {
+    return 'Dog{id:$id,  name:$name}';
+  }
 }

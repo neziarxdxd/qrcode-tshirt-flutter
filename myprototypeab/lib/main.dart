@@ -55,6 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
               SizedBox(height: 20,),
               
+              
               TextField(obscureText: true,
               decoration: InputDecoration(
                 border:OutlineInputBorder(),
@@ -81,7 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: RaisedButton(                                  
                       color: Colors.blue,
                       onPressed: () async {
-                         print(await _todoHelper.getAllTask());
+                        var x= await _todoHelper.getAllTask();
+                        print(x.toString());
 
 
 
