@@ -7,8 +7,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-       
+      theme: ThemeData(       
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Grade Viewer App'),
@@ -60,7 +59,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.blue,
                       onPressed: () {
                          currentTask = TaskModel(name: textController.text);
+                         var x= await _todoHelper.getAllTask();                        
                         _todoHelper.insertTask(currentTask);
+                        print(x.toString());
                       },
                       child: Text("Button"),
                       textColor: Colors.white,                  
@@ -70,12 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: RaisedButton(                                  
                       color: Colors.blue,
                       onPressed: () async {
-                        var x= await _todoHelper.getAllTask();
-                        print(x.toString());
+                        
                       },
                       child: Text("Button"),
-                      textColor: Colors.white,
-                      
+                      textColor: Colors.white,                    
                       
                     ),),
                 ],
