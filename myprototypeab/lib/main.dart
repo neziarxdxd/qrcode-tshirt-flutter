@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'db.dart';
 import 'taskModel.dart';
 void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends StatelessWidget { 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,10 +18,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
- 
-
   final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -36,8 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
      final TodoHelper _todoHelper = TodoHelper();
     return Scaffold(
-      appBar: AppBar(
-        
+        appBar: AppBar(        
         title: Text(widget.title),
       ),
       body: Center(
@@ -52,18 +46,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 border:OutlineInputBorder(),
                 labelText: 'Username'
               ),),
-
-              SizedBox(height: 20,),
-              
-              
+              SizedBox(height: 20,),                    
               TextField(obscureText: true,
-              decoration: InputDecoration(
+                decoration: InputDecoration(
                 border:OutlineInputBorder(),
                 labelText: 'Password'
               ),),
               SizedBox(height: 20,),
-              Row(
-                
+              Row(                
                 children: <Widget>[
                   Expanded(                    
                     child: RaisedButton(                                  
@@ -71,11 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () {
                          currentTask = TaskModel(name: textController.text);
                         _todoHelper.insertTask(currentTask);
-
                       },
                       child: Text("Button"),
-                      textColor: Colors.white,
-                      
+                      textColor: Colors.white,                  
                       
                     ),),
                     Expanded(                    
@@ -84,9 +72,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () async {
                         var x= await _todoHelper.getAllTask();
                         print(x.toString());
-
-
-
                       },
                       child: Text("Button"),
                       textColor: Colors.white,
