@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Expanded(                    
                     child: RaisedButton(                                  
                       color: Colors.blue,
-                      onPressed: () {
+                      onPressed: () async {
                          currentTask = TaskModel(name: textController.text);
                          var x= await _todoHelper.getAllTask();                        
                         _todoHelper.insertTask(currentTask);
@@ -70,8 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Expanded(                    
                     child: RaisedButton(                                  
                       color: Colors.blue,
-                      onPressed: () async {
-                        
+                      onPressed: () async {                        
                       },
                       child: Text("Button"),
                       textColor: Colors.white,                    
