@@ -25,7 +25,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final textController = TextEditingController();
   TaskModel currentTask;
-  List <TaskModel>listOFTask;
+  List <TaskModel>listOFTask=[];
+  
   @override
   Widget build(BuildContext context) {
      final TodoHelper _todoHelper = TodoHelper();
@@ -52,16 +53,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 labelText: 'Password'
               ),),
               SizedBox(height: 20,),
-              Row(                
+              Row(crossAxisAlignment: CrossAxisAlignment.stretch,                
                 children: <Widget>[
                   Expanded(                    
                     child: RaisedButton(                                  
                       color: Colors.blue,
                       onPressed: () async {
                          currentTask = TaskModel(name: textController.text);
-                         var x= await _todoHelper.getAllTask();                        
                         _todoHelper.insertTask(currentTask);
-                        print(x.toString());
+                        List<TaskModel> list = await _todoHelper.getAllTask();
+                        setState(() {
+                          listOFTask = list;
+                        });
                       },
                       child: Text("Button"),
                       textColor: Colors.white,                  
@@ -78,8 +81,23 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),),
                 ],
               )
-            ]
+            ,
+            Expanded(
+              child: ListView.separated(
+                  
+                  itemBuilder: (context, index){
+                    return ListTile(
+                      leading: Text("${listOFTask[index].id}"),
+                      title: Text("${listOFTask[index].name}"),
+                      onLongPress: (){print("Gumagana si ${listOFTask[index].id}");},
+                    );
+                  },
+                  separatorBuilder: (context, index) => Divider(),
+                  itemCount: listOFTask.length,
+
+               )) ]
           ),
+          
         ),
       ),
       
