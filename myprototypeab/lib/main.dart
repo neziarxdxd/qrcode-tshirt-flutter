@@ -25,11 +25,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final textController = TextEditingController();
   TaskModel currentTask;
+  final TodoHelper _todoHelper = TodoHelper();
   List <TaskModel>listOFTask=[];
+  void showData() async{
+    List<TaskModel> list = await _todoHelper.getAllTask();
+                        setState(() {
+                          listOFTask = list;
+                        });
+  }
   
   @override
   Widget build(BuildContext context) {
-     final TodoHelper _todoHelper = TodoHelper();
+     
     return Scaffold(
         appBar: AppBar(        
         title: Text(widget.title),
@@ -53,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 labelText: 'Password'
               ),),
               SizedBox(height: 20,),
-              Row(crossAxisAlignment: CrossAxisAlignment.stretch,                
+              Row(               
                 children: <Widget>[
                   Expanded(                    
                     child: RaisedButton(                                  
@@ -61,10 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () async {
                          currentTask = TaskModel(name: textController.text);
                         _todoHelper.insertTask(currentTask);
-                        List<TaskModel> list = await _todoHelper.getAllTask();
-                        setState(() {
-                          listOFTask = list;
-                        });
+                        showData();
+                        
                       },
                       child: Text("Button"),
                       textColor: Colors.white,                  
@@ -89,7 +94,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     return ListTile(
                       leading: Text("${listOFTask[index].id}"),
                       title: Text("${listOFTask[index].name}"),
-                      onLongPress: (){print("Gumagana si ${listOFTask[index].id}");},
+                      onLongPress: (){
+                        _todoHelper.deleteTask("${listOFTask[index].id}");
+                        showData();
+                        
+                        },
                     );
                   },
                   separatorBuilder: (context, index) => Divider(),

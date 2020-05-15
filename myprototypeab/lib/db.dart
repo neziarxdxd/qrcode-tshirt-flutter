@@ -29,7 +29,13 @@ class TodoHelper{
       print(_);
     }
   }
-
+  Future<void> deleteTask(id) async{
+     await db.delete(
+      tableName,      
+      where: "id = ?",      
+      whereArgs: [id],
+    );
+  }
   Future<List<TaskModel>> getAllTask () async{
     final List<Map<String, dynamic>> tasks = await db.query(tableName);
 
@@ -37,5 +43,8 @@ class TodoHelper{
       return TaskModel(name: tasks[i][columnName], id: tasks[i][columnID]);
     });
   }
+  
+ 
+ 
 
 }
