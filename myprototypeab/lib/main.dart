@@ -47,12 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             children:[
               TextField(
-              controller: textController,
-              
+              controller: textController,              
               decoration: InputDecoration(
                 border:OutlineInputBorder(),
                 labelText: 'Username'
-              ),),
+              ),
+              ),
               SizedBox(height: 20,),                    
               TextField(obscureText: true,
                 decoration: InputDecoration(
@@ -109,7 +109,13 @@ class _MyHomePageState extends State<MyHomePage> {
           
         ),
       ),
-      
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        label: Text('Approve'),
+        icon: Icon(Icons.thumb_up),
+        backgroundColor: Colors.pink,)
     );
   }
 }
