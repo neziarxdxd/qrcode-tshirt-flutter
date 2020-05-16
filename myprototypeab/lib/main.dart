@@ -33,10 +33,19 @@ class _MyHomePageState extends State<MyHomePage> {
                           listOFTask = list;
                         });
   }
-  
+  void showDialog(
+    
+    builder: (BuildContext context){
+        return AlertDialog(
+          title: Text("Alert Dialog"),
+          content: Text("Dialog Content"),
+        );
+    }
+  )
+
   @override
   Widget build(BuildContext context) {
-     
+    showData();
     return Scaffold(
         appBar: AppBar(        
         title: Text(widget.title),
@@ -46,47 +55,15 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children:[
-              TextField(
-              controller: textController,              
-              decoration: InputDecoration(
-                border:OutlineInputBorder(),
-                labelText: 'Username'
-              ),
-              ),
+              
               SizedBox(height: 20,),                    
               TextField(obscureText: true,
                 decoration: InputDecoration(
                 border:OutlineInputBorder(),
                 labelText: 'Password'
               ),),
-              SizedBox(height: 20,),
-              Row(               
-                children: <Widget>[
-                  Expanded(                    
-                    child: RaisedButton(                                  
-                      color: Colors.blue,
-                      onPressed: () async {
-                         currentTask = TaskModel(name: textController.text);
-                        _todoHelper.insertTask(currentTask);
-                        showData();
-                        
-                      },
-                      child: Text("Button"),
-                      textColor: Colors.white,                  
-                      
-                    ),),
-                    Expanded(                    
-                    child: RaisedButton(                                  
-                      color: Colors.blue,
-                      onPressed: () async {                        
-                      },
-                      child: Text("Button"),
-                      textColor: Colors.white,                    
-                      
-                    ),),
-                ],
-              )
-            ,
+              SizedBox(height: 20,),             
+            
             Expanded(
               child: ListView.separated(
                   
@@ -113,8 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () {
           // Add your onPressed code here!
         },
-        label: Text('Approve'),
-        icon: Icon(Icons.thumb_up),
+        label: Text('Add Note'),
+        icon: Icon(Icons.add),
         backgroundColor: Colors.pink,)
     );
   }
