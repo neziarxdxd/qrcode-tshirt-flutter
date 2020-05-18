@@ -33,15 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           listOFTask = list;
                         });
   }
-  void showDialog(
-    
-    builder: (BuildContext context){
-        return AlertDialog(
-          title: Text("Alert Dialog"),
-          content: Text("Dialog Content"),
-        );
-    }
-  )
+  
 
   @override
   Widget build(BuildContext context) {
