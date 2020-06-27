@@ -16,9 +16,13 @@ class PercentageCard extends StatelessWidget {
         lineHeight: 50.0,
         animationDuration: 2000,
         percent: 0.9,
-        center: Text(habitName),
-        linearStrokeCap: LinearStrokeCap.butt,
-        progressColor: Colors.greenAccent,
+        center: Text(
+          habitName,
+          style: TextStyle(
+              fontWeight: FontWeight.w700, fontSize: 20.0, color: Colors.white),
+        ),
+        linearStrokeCap: LinearStrokeCap.roundAll,
+        progressColor: Colors.blue,
       ),
     );
   }
