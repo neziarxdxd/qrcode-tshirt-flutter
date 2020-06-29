@@ -56,9 +56,24 @@ class _MyPageState extends State<MyPage> {
             Expanded(
                 child: ListView.separated(
               itemBuilder: (context, index) {
-                return ListTile(
-                  leading: Text("${tasks[index].id}"),
-                  title: Text("${tasks[index].name}"),
+                return GestureDetector(
+                  onTap: () {
+                    print(tasks[index].name);
+                  },
+                  onDoubleTap: () {
+                    print("nagdouble");
+                  },
+                  child: Container(
+                    height: 100.0,
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Row(
+                          children: [Text(tasks[index].name)],
+                        ),
+                      ),
+                    ),
+                  ),
                 );
               },
               separatorBuilder: (context, index) => Divider(),
