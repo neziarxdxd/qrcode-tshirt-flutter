@@ -40,6 +40,11 @@ class TodoHelper {
     }
   }
 
+  Future<void> getTheseTask() async {
+    final List<Map<String, dynamic>> tasks = await db.query(tableName);
+    return tasks;
+  }
+
   Future<List<TaskModel>> getAllTask() async {
     final List<Map<String, dynamic>> tasks = await db.query(tableName);
 

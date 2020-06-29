@@ -19,6 +19,7 @@ class MyPage extends StatefulWidget {
 
 class _MyPageState extends State<MyPage> {
   final todoHelper = TodoHelper();
+  List<TaskModel> tasks = [];
   TaskModel currentTask;
   final myTextControl = new TextEditingController();
   @override
@@ -47,9 +48,22 @@ class _MyPageState extends State<MyPage> {
                 color: Colors.green,
                 onPressed: () async {
                   List<TaskModel> list = await todoHelper.getAllTask();
-                  list.map((e) => print(e.toString()));
+                  setState(() {
+                    tasks = list;
+                  });
                 },
-                child: Text("Show Task"))
+                child: Text("Show Task")),
+            Expanded(
+                child: ListView.separated(
+              itemBuilder: (context, index) {
+                return ListTile(
+                  leading: Text("${tasks[index].id}"),
+                  title: Text("${tasks[index].name}"),
+                );
+              },
+              separatorBuilder: (context, index) => Divider(),
+              itemCount: tasks.length,
+            ))
           ],
         ),
       ),
