@@ -26,6 +26,8 @@ class TheCards extends StatelessWidget {
             new LinearPercentIndicator(
               width: 200.0,
               lineHeight: 8.0,
+              animationDuration: 2000,
+              animation: true,
               percent: 0.9,
               progressColor: color,
             )
