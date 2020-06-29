@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dbstorage.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,6 +18,7 @@ class MyPage extends StatefulWidget {
 }
 
 class _MyPageState extends State<MyPage> {
+  final myTextControl = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,14 +26,21 @@ class _MyPageState extends State<MyPage> {
         backgroundColor: Colors.blue,
         title: Center(child: Text('Habit Tracker')),
       ),
-      body: Column(
-        children: <Widget>[
-          FlatButton(onPressed: () {}, child: Text("dfd")),
-          Flexible(
-              child: Padding(
-            padding: const EdgeInsets.all(16.0),
-          ))
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: <Widget>[
+            TextField(
+              controller: myTextControl,
+            ),
+            FlatButton(
+                color: Colors.blue,
+                onPressed: () {
+                  print(myTextControl.text);
+                },
+                child: Text("Add")),
+          ],
+        ),
       ),
     );
   }

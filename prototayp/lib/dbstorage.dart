@@ -27,7 +27,7 @@ class TodoHelper {
     db = await openDatabase(join(await getDatabasesPath(), "databse.db"),
         onCreate: (db, version) {
       return db.execute(
-          '''CREATE TABLE $tableName($columnID INTEGER PRIMARY KEY AUTOINCREMENT, $columnName TEXT)''');
+          "CREATE TABLE $tableName($columnID INTEGER PRIMARY KEY AUTOINCREMENT, $columnName TEXT)");
     }, version: 1);
   }
 
