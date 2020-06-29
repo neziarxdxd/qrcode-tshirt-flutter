@@ -18,6 +18,8 @@ class MyPage extends StatefulWidget {
 }
 
 class _MyPageState extends State<MyPage> {
+  final todoHelper = TodoHelper();
+  TaskModel currentTask;
   final myTextControl = new TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -37,8 +39,17 @@ class _MyPageState extends State<MyPage> {
                 color: Colors.blue,
                 onPressed: () {
                   print(myTextControl.text);
+                  currentTask = TaskModel(name: myTextControl.text);
+                  todoHelper.insertTask(currentTask);
                 },
                 child: Text("Add")),
+            FlatButton(
+                color: Colors.green,
+                onPressed: () async {
+                  List<TaskModel> list = await todoHelper.getAllTask();
+                  list.map((e) => print(e.toString()));
+                },
+                child: Text("Show Task"))
           ],
         ),
       ),
