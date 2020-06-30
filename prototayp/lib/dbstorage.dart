@@ -44,7 +44,8 @@ class ActivityHelper {
           $columnActivityName TEXT,
           $columnActivityDate TEXT,
           $columnActivityTime TEXT
-          )         
+          );  
+               
           ''');
     }, version: 1);
   }
