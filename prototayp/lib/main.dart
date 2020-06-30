@@ -48,37 +48,11 @@ class _MyPageState extends State<MyPage> {
                 color: Colors.green,
                 onPressed: () async {
                   List<TaskModel> list = await todoHelper.getAllTask();
-                  setState(() {
-                    tasks = list;
+                  list.forEach((element) {
+                    print(element.name);
                   });
                 },
                 child: Text("Show Task")),
-            Expanded(
-                child: ListView.separated(
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    print(tasks[index].name);
-                  },
-                  onDoubleTap: () {
-                    print("nagdouble");
-                  },
-                  child: Container(
-                    height: 100.0,
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Row(
-                          children: [Text(tasks[index].name)],
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) => Divider(),
-              itemCount: tasks.length,
-            ))
           ],
         ),
       ),
