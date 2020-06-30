@@ -1,55 +1,65 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-final String tableName = "todom";
-final String columnID = "id";
-final String columnName = "name";
+// this is for Activity Table
+final String tableNameActivity = "tbl_activityTable";
+final String columnActivityID = "activityID";
+final String columnActivityName = "activityName";
+final String columnActivityDate = "activityDate";
 
-class TaskModel {
-  final String name;
-  int id;
+class ActivityModel {
+  int activityID;
+  final String activityName;
+  final String activityDate;
 
-  TaskModel({this.name, this.id});
+  ActivityModel({this.activityID, this.activityName, this.activityDate});
 
   Map<String, dynamic> toMap() {
-    return {columnName: this.name};
+    return {
+      columnActivityName: this.activityName,
+      columnActivityDate: this.activityDate
+    };
   }
 }
 
-class TodoHelper {
-  Database db;
+class ActivityHelper {
+  Database database;
 
-  TodoHelper() {
+  ActivityHelper() {
     initDatabase();
   }
 
   Future<void> initDatabase() async {
-    db = await openDatabase(join(await getDatabasesPath(), "databse.db"),
+    database = await openDatabase(join(await getDatabasesPath(), "databse.db"),
         onCreate: (db, version) {
-      return db.execute(
-          "CREATE TABLE $tableName($columnID INTEGER PRIMARY KEY AUTOINCREMENT, $columnName TEXT)");
+      return db.execute('''
+          CREATE TABLE $tableNameActivity($columnActivityID INTEGER PRIMARY KEY AUTOINCREMENT, 
+          $columnActivityName TEXT,
+          $columnActivityDate
+          );         
+          
+          ''');
     }, version: 1);
   }
 
-  Future<void> insertTask(TaskModel task) async {
+  Future<void> insertTask(ActivityModel task) async {
     try {
-      db.insert(tableName, task.toMap(),
+      database.insert(tableNameActivity, task.toMap(),
           conflictAlgorithm: ConflictAlgorithm.replace);
     } catch (_) {
       print(_);
     }
   }
 
-  Future<void> getTheseTask() async {
-    final List<Map<String, dynamic>> tasks = await db.query(tableName);
-    return tasks;
-  }
+  Future<List<ActivityModel>> getAllTask() async {
+    final List<Map<String, dynamic>> tasks =
+        await database.query(tableNameActivity);
 
-  Future<List<TaskModel>> getAllTask() async {
-    final List<Map<String, dynamic>> tasks = await db.query(tableName);
-
-    return List.generate(tasks.length, (i) {
-      return TaskModel(name: tasks[i][columnName], id: tasks[i][columnID]);
+    return List.generate(tasks.length, (index) {
+      return ActivityModel(
+          activityID: tasks[index][columnActivityID],
+          activityName: tasks[index][columnActivityName],
+          activityDate: tasks[index][columnActivityDate]);
     });
   }
 }

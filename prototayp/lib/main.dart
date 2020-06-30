@@ -18,10 +18,11 @@ class MyPage extends StatefulWidget {
 }
 
 class _MyPageState extends State<MyPage> {
-  final todoHelper = TodoHelper();
-  List<TaskModel> tasks = [];
-  TaskModel currentTask;
+  final todoHelper = ActivityHelper();
+  List<ActivityModel> tasks = [];
+  ActivityModel currentTask;
   final myTextControl = new TextEditingController();
+  final myDateControl = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,20 +37,25 @@ class _MyPageState extends State<MyPage> {
             TextField(
               controller: myTextControl,
             ),
+            TextField(
+              controller: myDateControl,
+            ),
             FlatButton(
-                color: Colors.blue,
+                color: Colors.red,
                 onPressed: () {
                   print(myTextControl.text);
-                  currentTask = TaskModel(name: myTextControl.text);
+                  currentTask = ActivityModel(
+                      activityName: myTextControl.text,
+                      activityDate: myDateControl.text);
                   todoHelper.insertTask(currentTask);
                 },
                 child: Text("Add")),
             FlatButton(
                 color: Colors.green,
                 onPressed: () async {
-                  List<TaskModel> list = await todoHelper.getAllTask();
+                  List<ActivityModel> list = await todoHelper.getAllTask();
                   list.forEach((element) {
-                    print(element.name);
+                    print(element.activityName + " : " + element.activityDate);
                   });
                 },
                 child: Text("Show Task")),
