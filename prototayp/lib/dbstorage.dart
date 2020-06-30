@@ -2,22 +2,29 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 // this is for Activity Table
-final String tableNameActivity = "tbl_activityTable";
+final String tableNameActivity = "tblActivityTable";
 final String columnActivityID = "activityID";
 final String columnActivityName = "activityName";
 final String columnActivityDate = "activityDate";
+final String columnActivityTime = "activityTime";
 
 class ActivityModel {
   int activityID;
   final String activityName;
   final String activityDate;
+  final String activityTime;
 
-  ActivityModel({this.activityID, this.activityName, this.activityDate});
+  ActivityModel(
+      {this.activityID,
+      this.activityName,
+      this.activityDate,
+      this.activityTime});
 
   Map<String, dynamic> toMap() {
     return {
       columnActivityName: this.activityName,
-      columnActivityDate: this.activityDate
+      columnActivityDate: this.activityDate,
+      columnActivityTime: this.activityTime
     };
   }
 }
@@ -33,11 +40,11 @@ class ActivityHelper {
     database = await openDatabase(join(await getDatabasesPath(), "databse.db"),
         onCreate: (db, version) {
       return db.execute('''
-          CREATE TABLE $tableNameActivity($columnActivityID INTEGER PRIMARY KEY AUTOINCREMENT, 
+      CREATE TABLE $tableNameActivity ($columnActivityID INTEGER PRIMARY KEY AUTOINCREMENT,
           $columnActivityName TEXT,
-          $columnActivityDate
-          );         
-          
+          $columnActivityDate TEXT,
+          $columnActivityTime TEXT
+          )         
           ''');
     }, version: 1);
   }
@@ -59,7 +66,8 @@ class ActivityHelper {
       return ActivityModel(
           activityID: tasks[index][columnActivityID],
           activityName: tasks[index][columnActivityName],
-          activityDate: tasks[index][columnActivityDate]);
+          activityDate: tasks[index][columnActivityDate],
+          activityTime: tasks[index][columnActivityTime]);
     });
   }
 }

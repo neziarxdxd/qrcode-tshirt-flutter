@@ -19,6 +19,7 @@ class MyPage extends StatefulWidget {
 
 class _MyPageState extends State<MyPage> {
   final todoHelper = ActivityHelper();
+  List<String> dateTime = new DateTime.now().toString().split(" ");
   List<ActivityModel> tasks = [];
   ActivityModel currentTask;
   final myTextControl = new TextEditingController();
@@ -46,7 +47,9 @@ class _MyPageState extends State<MyPage> {
                   print(myTextControl.text);
                   currentTask = ActivityModel(
                       activityName: myTextControl.text,
-                      activityDate: myDateControl.text);
+                      activityDate: dateTime[0],
+                      activityTime: dateTime[1]);
+
                   todoHelper.insertTask(currentTask);
                 },
                 child: Text("Add")),
@@ -55,7 +58,11 @@ class _MyPageState extends State<MyPage> {
                 onPressed: () async {
                   List<ActivityModel> list = await todoHelper.getAllTask();
                   list.forEach((element) {
-                    print(element.activityName + " : " + element.activityDate);
+                    print(element.activityName +
+                        " : " +
+                        element.activityDate +
+                        " -- " +
+                        element.activityTime);
                   });
                 },
                 child: Text("Show Task")),
