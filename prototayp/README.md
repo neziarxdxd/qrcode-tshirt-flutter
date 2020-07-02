@@ -4,9 +4,17 @@ A new Flutter project.
 # RESOURCES
 ```
 DynamicWidgetBuilder.build(
-                '{"type":"Icon","color":"#000000","data":"fa.google"}',
-                context,
-                new DefaultClickListener())
+    '{"type":"Icon","color":"#000000","data":"fa.google"}',
+        context,new DefaultClickListener())
+    }
+
+class DefaultClickListener implements ClickListener {
+  @override
+  void onClicked(String event) {
+    print("Receive click event: " + event);
+  }
+}
+
 ```
 ## Getting Started
 

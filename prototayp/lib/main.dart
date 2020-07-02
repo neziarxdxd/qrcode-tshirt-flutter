@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dbstorage.dart';
-import 'package:dynamic_widget/dynamic_widget.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,6 +24,7 @@ class _MyPageState extends State<MyPage> {
   ActivityModel currentTask;
   final myTextControl = new TextEditingController();
   final myDateControl = new TextEditingController();
+  String dropdownValue = 'One';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +36,28 @@ class _MyPageState extends State<MyPage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
+            DropdownButton<String>(
+                value: dropdownValue,
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                style: TextStyle(color: Colors.deepPurple),
+                underline: Container(
+                  height: 2,
+                  color: Colors.deepPurpleAccent,
+                ),
+                onChanged: (String newValue) {
+                  setState(() {
+                    dropdownValue = newValue;
+                  });
+                },
+                items: <String>['One', 'Two', 'Free', 'Four']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList()),
             TextField(
               controller: myTextControl,
             ),
@@ -71,12 +93,5 @@ class _MyPageState extends State<MyPage> {
         ),
       ),
     );
-  }
-}
-
-class DefaultClickListener implements ClickListener {
-  @override
-  void onClicked(String event) {
-    print("Receive click event: " + event);
   }
 }
