@@ -1,7 +1,13 @@
 # prototayp
 
 A new Flutter project.
-
+# RESOURCES
+```
+DynamicWidgetBuilder.build(
+                '{"type":"Icon","color":"#000000","data":"fa.google"}',
+                context,
+                new DefaultClickListener())
+```
 ## Getting Started
 
 This project is a starting point for a Flutter application.

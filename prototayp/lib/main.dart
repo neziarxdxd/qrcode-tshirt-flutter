@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dbstorage.dart';
+import 'package:dynamic_widget/dynamic_widget.dart';
 
 void main() => runApp(MyApp());
 
@@ -70,5 +71,12 @@ class _MyPageState extends State<MyPage> {
         ),
       ),
     );
+  }
+}
+
+class DefaultClickListener implements ClickListener {
+  @override
+  void onClicked(String event) {
+    print("Receive click event: " + event);
   }
 }
