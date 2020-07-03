@@ -11,6 +11,7 @@ final String columnActivityIcon = "activityIcon";
 final String tableNameDateStamp = "tblDateStamp";
 final String columnDateID = "dateID";
 final String columnDateStamp = "dateStamp";
+final String columnDateActivityID = "activityDateID";
 
 class ActivityModel {
   int activityID;
@@ -33,6 +34,22 @@ class ActivityModel {
   }
 }
 
+class DateStampModel {
+  int dateID;
+  String dateStamp;
+  String activityDateID;
+
+  DateStampModel({this.dateID, this.dateStamp, this.activityDateID});
+
+  Map<String, dynamic> toMap() {
+    return {
+      columnDateID: this.dateID,
+      columnDateStamp: this.dateStamp,
+      columnDateActivityID: this.activityDateID
+    };
+  }
+}
+
 class ActivityHelper {
   Database database;
 
@@ -51,7 +68,7 @@ class ActivityHelper {
           );
       CREATE TABLE $tableNameDateStamp ($columnDateID INTEGER PRIMARY KEY AUTOINCREMENT,     
       $columnDateStamp TEXT,
-      FOREIGN KEY ($columnActivityID) REFERENCES $tableNameActivity($columnActivityID)
+      FOREIGN KEY ($columnDateActivityID) REFERENCES $tableNameActivity($columnActivityID)
       );  
                
       ''');
@@ -61,6 +78,15 @@ class ActivityHelper {
   Future<void> insertTask(ActivityModel task) async {
     try {
       database.insert(tableNameActivity, task.toMap(),
+          conflictAlgorithm: ConflictAlgorithm.replace);
+    } catch (_) {
+      print(_);
+    }
+  }
+
+  Future<void> insertDateStamp(DateStampModel dateStampModel) async {
+    try {
+      database.insert(tableNameActivity, dateStampModel.toMap(),
           conflictAlgorithm: ConflictAlgorithm.replace);
     } catch (_) {
       print(_);

@@ -30,32 +30,20 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: Center(child: Text('Habit Tracker')),
-        ),
-        body: Center(
-          child: Column(
-            children: [
-              DartDropwItem(),
-              FlatButton(
-                child: Text("Print debug"),
-                color: Colors.red,
-                onPressed: () {
-                  String x = selectedUser.icon.toString();
-                  setState(() {
-                    thisTestIcon = selectedUser.icon;
-                  });
-
-                  print(x);
-                },
-              ),
-              Padding(
-                padding: EdgeInsets.all(16),
-                child: thisTestIcon,
-              )
-            ],
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: Center(child: Text('Habit Tracker')),
+      ),
+      body: Center(),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text('Home'),
           ),
-        ));
+        ],
+      ),
+    );
   }
 }
