@@ -26,7 +26,7 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
   ActivityModel currentTask;
   final myTextControl = new TextEditingController();
   final myDateControl = new TextEditingController();
-
+  Icon thisTestIcon;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,9 +42,17 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
                 child: Text("Print debug"),
                 color: Colors.red,
                 onPressed: () {
-                  String x = selectedUser.toData();
+                  String x = selectedUser.icon.toString();
+                  setState(() {
+                    thisTestIcon = selectedUser.icon;
+                  });
+
                   print(x);
                 },
+              ),
+              Padding(
+                padding: EdgeInsets.all(16),
+                child: thisTestIcon,
               )
             ],
           ),

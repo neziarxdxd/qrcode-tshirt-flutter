@@ -5,8 +5,12 @@ import 'package:path/path.dart';
 final String tableNameActivity = "tblActivityTable";
 final String columnActivityID = "activityID";
 final String columnActivityName = "activityName";
-final String columnActivityDate = "activityDate";
-final String columnActivityTime = "activityTime";
+final String columnNumberOfDays = "activityDays";
+final String columnActivityIcon = "activityIcon";
+
+final String tableNameDateStamp = "tblDateStamp";
+final String columnDateID = "dateID";
+final String columnDateStamp = "dateStamp";
 
 class ActivityModel {
   int activityID;
@@ -23,8 +27,8 @@ class ActivityModel {
   Map<String, dynamic> toMap() {
     return {
       columnActivityName: this.activityName,
-      columnActivityDate: this.activityDate,
-      columnActivityTime: this.activityTime
+      columnActivityIcon: this.activityDate,
+      columnNumberOfDays: this.activityTime
     };
   }
 }
@@ -42,11 +46,15 @@ class ActivityHelper {
       return db.execute('''
       CREATE TABLE $tableNameActivity ($columnActivityID INTEGER PRIMARY KEY AUTOINCREMENT,
           $columnActivityName TEXT,
-          $columnActivityDate TEXT,
-          $columnActivityTime TEXT
-          );  
+          $columnActivityIcon TEXT,
+          $columnNumberOfDays TEXT
+          );
+      CREATE TABLE $tableNameDateStamp ($columnDateID INTEGER PRIMARY KEY AUTOINCREMENT,     
+      $columnDateStamp TEXT,
+      FOREIGN KEY ($columnActivityID) REFERENCES $tableNameActivity($columnActivityID)
+      );  
                
-          ''');
+      ''');
     }, version: 1);
   }
 
@@ -67,8 +75,8 @@ class ActivityHelper {
       return ActivityModel(
           activityID: tasks[index][columnActivityID],
           activityName: tasks[index][columnActivityName],
-          activityDate: tasks[index][columnActivityDate],
-          activityTime: tasks[index][columnActivityTime]);
+          activityDate: tasks[index][columnActivityIcon],
+          activityTime: tasks[index][columnNumberOfDays]);
     });
   }
 }
