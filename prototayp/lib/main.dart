@@ -36,42 +36,46 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
     });
   }
 
-  List<Widget> myPage = [QRReaderPage(), SummaryPage()];
+  List<Widget> myPage = [
+    QRReaderPage(),
+    SummaryPage(),
+    SummaryPage(),
+    SummaryPage(),
+    SummaryPage(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFEFF3FF),
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFF7C80BA),
         title: Center(child: Text('Habit Tracker')),
       ),
       body: Center(
         child: myPage[_selectedIndex],
       ),
-      bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(
-            activeIcon: Icon(Icons.home, color: Colors.red),
-            icon: Icon(
-              Icons.home,
-              color: Color(0xffff9090),
+      bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                ),
+                title: Text('Home')),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.camera_alt),
+              title: Text('QR Scan'),
             ),
-            title: Text('Home')),
-        BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add_a_photo,
-              color: Color(0xffff9090),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.add), title: Text('Add Activity')),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.playlist_play),
+              title: Text('Summary Habits'),
             ),
-            title: Text('Home')),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.home,
-            color: Color(0xffff9090),
-          ),
-          title: Text(
-            'Home',
-            style: TextStyle(color: Color(0xffff9090)),
-          ),
-        ),
-      ], currentIndex: _selectedIndex, onTap: _onItemTapped),
+          ],
+          selectedItemColor: Color(0xffff9090),
+          unselectedItemColor: Colors.black26,
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped),
     );
   }
 }

@@ -26,6 +26,8 @@ dependencies:
   sqflite: ^1.3.0
   percent_indicator: "^2.1.5"
   dynamic_widget: ^2.0.1
+  qrscan: ^0.2.17
+
 
 
 dev_dependencies:
