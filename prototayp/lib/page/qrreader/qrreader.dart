@@ -12,7 +12,7 @@ class _QRReaderPageState extends State<QRReaderPage> {
         child: Center(
       child: Text(
         "QR Code cs",
-        style: TextStyle(color: Colors.deepOrangeAccent),
+        style: TextStyle(color: Colors.red),
       ),
     ));
   }

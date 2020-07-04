@@ -48,10 +48,28 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
         child: myPage[_selectedIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          title: Text('Home'),
+            activeIcon: Icon(Icons.home, color: Colors.red),
+            icon: Icon(
+              Icons.home,
+              color: Color(0xffff9090),
+            ),
+            title: Text('Home')),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.add_a_photo,
+              color: Color(0xffff9090),
+            ),
+            title: Text('Home')),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home,
+            color: Color(0xffff9090),
+          ),
+          title: Text(
+            'Home',
+            style: TextStyle(color: Color(0xffff9090)),
+          ),
         ),
       ], currentIndex: _selectedIndex, onTap: _onItemTapped),
     );
