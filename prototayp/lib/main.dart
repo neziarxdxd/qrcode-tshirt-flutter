@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'components/DropDownItem.dart';
 import 'dbstorage.dart';
+import 'page/qrreader/qrreader.dart';
+import 'page/summary/summary.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,6 +28,15 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
   final myTextControl = new TextEditingController();
   final myDateControl = new TextEditingController();
   Icon thisTestIcon;
+  int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    print(index);
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  List<Widget> myPage = [QRReaderPage(), SummaryPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,16 +44,16 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
         backgroundColor: Colors.blue,
         title: Center(child: Text('Habit Tracker')),
       ),
-      body: Center(),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-        ],
+      body: Center(
+        child: myPage[_selectedIndex],
       ),
+      bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          title: Text('Home'),
+        ),
+      ], currentIndex: _selectedIndex, onTap: _onItemTapped),
     );
   }
 }
