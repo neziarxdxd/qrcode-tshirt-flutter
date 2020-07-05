@@ -28,9 +28,11 @@ class _QRReaderPageState extends State<QRReaderPage> {
               _scan();
             },
           ),
-          Container(child: Text(outputController.text)),
+          Container(child: Text("Tesdjfjd")),
         ],
       ),
     );
   }
 }
+
+///fdkfdkfk
