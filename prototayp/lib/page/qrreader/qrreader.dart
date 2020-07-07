@@ -11,9 +11,11 @@ class QRReaderPage extends StatefulWidget {
 
 class _QRReaderPageState extends State<QRReaderPage> {
   var outputController = new TextEditingController();
+  String x;
   Future _scan() async {
     String barcode = await scanner.scan();
     outputController.text = barcode;
+    x = barcode;
   }
 
   @override
@@ -30,7 +32,9 @@ class _QRReaderPageState extends State<QRReaderPage> {
               });
             },
           ),
-          Container(child: Text("Tesdjfjd")),
+          Container(
+              child: TextField(controller: outputController, readOnly: true)),
+          Container(child: Text(x)),
         ],
       ),
     );
