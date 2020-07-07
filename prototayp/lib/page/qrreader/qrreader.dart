@@ -25,7 +25,9 @@ class _QRReaderPageState extends State<QRReaderPage> {
             child: Text("Scann"),
             color: Colors.blue,
             onPressed: () {
-              _scan();
+              setState(() {
+                _scan();
+              });
             },
           ),
           Container(child: Text("Tesdjfjd")),
