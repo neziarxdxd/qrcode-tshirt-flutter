@@ -60,17 +60,13 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
                 icon: Icon(
                   Icons.home,
                 ),
-                title: Text('Home')),
+                title: Text('QR Scan')),
             BottomNavigationBarItem(
               icon: Icon(Icons.camera_alt),
-              title: Text('QR Scan'),
+              title: Text('Gift'),
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.add), title: Text('Add Activity')),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.playlist_play),
-              title: Text('Summary Habits'),
-            ),
+                icon: Icon(Icons.add), title: Text('About Us')),
           ],
           selectedItemColor: Color(0xffff9090),
           unselectedItemColor: Colors.black26,
