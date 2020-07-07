@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dbstorage.dart';
 import 'page/summary/summary.dart';
+import 'package:qrscan/qrscan.dart' as scanner;
+import 'page/qrreader/qrreader.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,6 +20,8 @@ class DropdownScreenState extends StatefulWidget {
   _DropdownScreenStateState createState() => _DropdownScreenStateState();
 }
 
+int selectedIndex = 0;
+
 class _DropdownScreenStateState extends State<DropdownScreenState> {
   final todoHelper = ActivityHelper();
 
@@ -27,11 +31,11 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
   final myTextControl = new TextEditingController();
   final myDateControl = new TextEditingController();
   Icon thisTestIcon;
-  int _selectedIndex = 0;
+
   void _onItemTapped(int index) {
     print(index);
     setState(() {
-      _selectedIndex = index;
+      selectedIndex = index;
     });
   }
 
@@ -41,6 +45,7 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
     SummaryPage(),
     SummaryPage(),
     SummaryPage(),
+    QRReaderPage(), // it goes here
   ];
   @override
   Widget build(BuildContext context) {
@@ -51,7 +56,7 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
         title: Center(child: Text('Habit Tracker')),
       ),
       body: Center(
-        child: myPage[_selectedIndex],
+        child: myPage[selectedIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
           items: [
@@ -61,7 +66,7 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
                 ),
                 title: Text('QR Scan')),
             BottomNavigationBarItem(
-              icon: Icon(Icons.camera_alt),
+              icon: Icon(Icons.featured_video),
               title: Text('Gift'),
             ),
             BottomNavigationBarItem(
@@ -69,7 +74,7 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
           ],
           selectedItemColor: Color(0xffff9090),
           unselectedItemColor: Colors.black26,
-          currentIndex: _selectedIndex,
+          currentIndex: selectedIndex,
           onTap: _onItemTapped),
     );
   }
@@ -81,18 +86,43 @@ class QRHome extends StatefulWidget {
 }
 
 class _QRHomeState extends State<QRHome> {
+  String qrCodeText;
+  var outputController = new TextEditingController();
+  _DropdownScreenStateState x = new _DropdownScreenStateState();
+
+  Future _scan() async {
+    String barcode = await scanner.scan();
+    outputController.text = barcode;
+
+    qrCodeText = outputController.text.toString();
+    print(qrCodeText);
+    if (qrCodeText == "Programmer Ako") {
+      qrCodeText = "YEST THANK YOUUU LORD";
+      print("YES they are equal");
+      selectedIndex = 5;
+    } else {
+      qrCodeText = "ONE MORE LORD";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FlatButton(
+              color: Colors.amberAccent,
               child: Text("Scan QR"),
               onPressed: () {
-                print("QR");
+                setState(() {
+                  _scan();
+                });
               },
-            )
+            ),
+            Text(qrCodeText)
           ],
         ),
       ),
