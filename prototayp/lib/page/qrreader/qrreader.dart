@@ -11,11 +11,10 @@ class QRReaderPage extends StatefulWidget {
 
 class _QRReaderPageState extends State<QRReaderPage> {
   var outputController = new TextEditingController();
-  String x;
+
   Future _scan() async {
     String barcode = await scanner.scan();
     outputController.text = barcode;
-    x = barcode;
   }
 
   @override
@@ -24,17 +23,14 @@ class _QRReaderPageState extends State<QRReaderPage> {
       child: Column(
         children: [
           FlatButton(
-            child: Text("Scann"),
-            color: Colors.blue,
+            child: Text("YEHEY THANK YOU LORD"),
+            color: Colors.orange,
             onPressed: () {
               setState(() {
                 _scan();
               });
             },
           ),
-          Container(
-              child: TextField(controller: outputController, readOnly: true)),
-          Container(child: Text(x)),
         ],
       ),
     );

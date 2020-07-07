@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dbstorage.dart';
-import 'page/qrreader/qrreader.dart';
 import 'page/summary/summary.dart';
 
 void main() => runApp(MyApp());
@@ -37,7 +36,7 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
   }
 
   List<Widget> myPage = [
-    QRReaderPage(),
+    QRHome(),
     SummaryPage(),
     SummaryPage(),
     SummaryPage(),
@@ -72,6 +71,31 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
           unselectedItemColor: Colors.black26,
           currentIndex: _selectedIndex,
           onTap: _onItemTapped),
+    );
+  }
+}
+
+class QRHome extends StatefulWidget {
+  @override
+  _QRHomeState createState() => _QRHomeState();
+}
+
+class _QRHomeState extends State<QRHome> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(
+        child: Column(
+          children: [
+            FlatButton(
+              child: Text("Scan QR"),
+              onPressed: () {
+                print("QR");
+              },
+            )
+          ],
+        ),
+      ),
     );
   }
 }
