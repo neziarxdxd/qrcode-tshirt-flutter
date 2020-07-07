@@ -86,10 +86,8 @@ class QRHome extends StatefulWidget {
 }
 
 class _QRHomeState extends State<QRHome> {
-  String qrCodeText;
   var outputController = new TextEditingController();
-  _DropdownScreenStateState x = new _DropdownScreenStateState();
-
+  String qrCodeText;
   Future _scan() async {
     String barcode = await scanner.scan();
     outputController.text = barcode;
@@ -97,11 +95,16 @@ class _QRHomeState extends State<QRHome> {
     qrCodeText = outputController.text.toString();
     print(qrCodeText);
     if (qrCodeText == "Programmer Ako") {
-      qrCodeText = "YEST THANK YOUUU LORD";
-      print("YES they are equal");
-      selectedIndex = 5;
+      setState(() {
+        qrCodeText = "YEST THANK YOUUU LORD";
+        print("YES they are equal");
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => QRReaderPage()));
+      });
     } else {
-      qrCodeText = "ONE MORE LORD";
+      setState(() {
+        qrCodeText = "ONE MORE LORD";
+      });
     }
   }
 
@@ -110,8 +113,6 @@ class _QRHomeState extends State<QRHome> {
     return Container(
       child: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FlatButton(
               color: Colors.amberAccent,
@@ -122,7 +123,14 @@ class _QRHomeState extends State<QRHome> {
                 });
               },
             ),
-            Text(qrCodeText)
+            Text('dsf'),
+            FlatButton(
+              child: Text("TEST"),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => QRReaderPage()));
+              },
+            )
           ],
         ),
       ),
