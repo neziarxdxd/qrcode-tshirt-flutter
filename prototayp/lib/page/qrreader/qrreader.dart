@@ -25,7 +25,7 @@ class _QRReaderPageState extends State<QRReaderPage> {
   }
 
   _launchURL() async {
-    const url = 'https://bit.ly/2BO5B9t';
+    const url = 'https://bit.ly/PATshirt';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
