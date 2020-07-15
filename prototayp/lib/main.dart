@@ -40,10 +40,10 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
   }
 
   List<Widget> myPage = [
-    SummaryPage(),
+    DetailsAboutMe(),
     QRHome(),
-    SummaryPage(),
-    SummaryPage(),
+    DetailsAboutMe(),
+    DetailsAboutMe(),
 
     QRReaderPage(), // it goes here
   ];
@@ -125,7 +125,7 @@ class _QRHomeState extends State<QRHome> {
             ),
             Text('dsf'),
             FlatButton(
-              child: Text("TEST"),
+              child: Text("Go to profile"),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => QRReaderPage()));
