@@ -8,8 +8,23 @@ class SummaryPage extends StatefulWidget {
 class _SummaryPageState extends State<SummaryPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(child: Text("Test")),
+    return Scaffold(
+      body: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Column(
+            children: [
+              Text(
+                "Name",
+              ),
+              TextField(
+                  decoration: InputDecoration(
+                      hintText: 'Hint Text',
+                      border: const OutlineInputBorder())),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
