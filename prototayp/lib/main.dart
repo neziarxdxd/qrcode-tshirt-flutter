@@ -23,11 +23,11 @@ class DropdownScreenState extends StatefulWidget {
 int selectedIndex = 0;
 
 class _DropdownScreenStateState extends State<DropdownScreenState> {
-  final todoHelper = ActivityHelper();
+  final todoHelper = PersonHelper();
 
   List<String> dateTime = new DateTime.now().toString().split(" ");
-  List<ActivityModel> tasks = [];
-  ActivityModel currentTask;
+  List<PersonModel> tasks = [];
+  PersonModel currentTask;
   final myTextControl = new TextEditingController();
   final myDateControl = new TextEditingController();
   Icon thisTestIcon;
@@ -52,8 +52,8 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
     return Scaffold(
       backgroundColor: Color(0xFFEFF3FF),
       appBar: AppBar(
-        backgroundColor: Color(0xFF7C80BA),
-        title: Center(child: Text('Habit Tracker')),
+        backgroundColor: Colors.blue,
+        title: Center(child: Text('Scan to know me app')),
       ),
       body: Center(
         child: myPage[selectedIndex],
@@ -72,7 +72,7 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.add), title: Text('About Us')),
           ],
-          selectedItemColor: Color(0xffff9090),
+          selectedItemColor: Color(0xff28306d),
           unselectedItemColor: Colors.black26,
           currentIndex: selectedIndex,
           onTap: _onItemTapped),

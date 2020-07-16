@@ -33,5 +33,3 @@ class _QRReaderPageState extends State<QRReaderPage> {
     }
   }
 }
-
-///fdkfdkfk

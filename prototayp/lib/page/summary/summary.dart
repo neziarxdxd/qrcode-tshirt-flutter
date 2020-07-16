@@ -8,8 +8,11 @@ class DetailsAboutMe extends StatefulWidget {
 
 class _DetailsAboutMeState extends State<DetailsAboutMe> {
   @override
+  final List<TextEditingController> controllers = [];
+
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFEFF3FF),
       body: Container(
         child: Padding(
           padding: const EdgeInsets.all(30.0),
@@ -24,12 +27,13 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                 height: 10.0,
               ),
               TextField(
+                  controller: controllers[0],
                   decoration:
                       InputDecoration(border: const OutlineInputBorder())),
               SizedBox(
                 height: 30.0,
               ),
-              Text("Age",
+              Text("Profession",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25.0,
@@ -38,17 +42,25 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                 height: 10.0,
               ),
               TextField(
-                  maxLength: 3,
-                  inputFormatters: <TextInputFormatter>[
-                    WhitelistingTextInputFormatter.digitsOnly
-                  ],
+                  maxLength: 25,
                   keyboardType: TextInputType.number,
+                  decoration:
+                      InputDecoration(border: const OutlineInputBorder())),
+              Text("Bio",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25.0,
+                  )),
+              SizedBox(
+                height: 10.0,
+              ),
+              TextField(
                   decoration:
                       InputDecoration(border: const OutlineInputBorder())),
               SizedBox(
                 height: 30.0,
               ),
-              Text("Where do you live?",
+              Text("Favorite Programming Language",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25.0,
@@ -75,6 +87,19 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                   maxLines: null,
                   decoration:
                       InputDecoration(border: const OutlineInputBorder())),
+              SizedBox(
+                height: 30.0,
+              ),
+              ButtonTheme(
+                height: 55,
+                child: RaisedButton(
+                  color: Colors.yellow,
+                  child: Text("Submit"),
+                  onPressed: () {
+                    print("Test" + controllers[0].text);
+                  },
+                ),
+              )
             ],
           ),
         ),
