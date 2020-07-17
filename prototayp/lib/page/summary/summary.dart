@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../dbstorage.dart';
 
 class DetailsAboutMe extends StatefulWidget {
   @override
@@ -8,7 +9,11 @@ class DetailsAboutMe extends StatefulWidget {
 
 class _DetailsAboutMeState extends State<DetailsAboutMe> {
   @override
-  final List<TextEditingController> controllers = [];
+  final nameController = new TextEditingController();
+  final bioController = new TextEditingController();
+  final faveLanguageController = new TextEditingController();
+  final professionController = new TextEditingController();
+  final tellMeMoreController = new TextEditingController();
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +32,7 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                 height: 10.0,
               ),
               TextField(
-                  controller: controllers[0],
+                  controller: nameController,
                   decoration:
                       InputDecoration(border: const OutlineInputBorder())),
               SizedBox(
@@ -95,9 +100,7 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                 child: RaisedButton(
                   color: Colors.yellow,
                   child: Text("Submit"),
-                  onPressed: () {
-                    print("Test" + controllers[0].text);
-                  },
+                  onPressed: () {},
                 ),
               )
             ],
