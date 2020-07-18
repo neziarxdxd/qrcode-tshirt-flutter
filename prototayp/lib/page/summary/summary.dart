@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../dbstorage.dart';
+
+import 'apiQuotes.dart';
 
 class DetailsAboutMe extends StatefulWidget {
   @override
@@ -8,13 +9,19 @@ class DetailsAboutMe extends StatefulWidget {
 }
 
 class _DetailsAboutMeState extends State<DetailsAboutMe> {
+  Future<Album> futureAlbum;
   @override
+  void initState() {
+    super.initState();
+    futureAlbum = fetchAlbum();
+  }
+
   final nameController = new TextEditingController();
   final bioController = new TextEditingController();
   final faveLanguageController = new TextEditingController();
   final professionController = new TextEditingController();
   final tellMeMoreController = new TextEditingController();
-
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFEFF3FF),
