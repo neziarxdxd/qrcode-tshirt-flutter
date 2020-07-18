@@ -9,13 +9,12 @@ class DetailsAboutMe extends StatefulWidget {
 }
 
 class _DetailsAboutMeState extends State<DetailsAboutMe> {
-  Future<Album> futureAlbum;
   @override
   void initState() {
     super.initState();
-    futureAlbum = fetchAlbum();
   }
 
+  APIQuotes api = APIQuotes();
   final nameController = new TextEditingController();
   final bioController = new TextEditingController();
   final faveLanguageController = new TextEditingController();
@@ -107,7 +106,9 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                 child: RaisedButton(
                   color: Colors.yellow,
                   child: Text("Submit"),
-                  onPressed: () {},
+                  onPressed: () {
+                    debugPrint(api.getData().toString());
+                  },
                 ),
               )
             ],
