@@ -3,6 +3,7 @@ import 'dbstorage.dart';
 import 'page/summary/summary.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 import 'page/qrreader/qrreader.dart';
+import 'page/quotePage/quoteMainPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -42,9 +43,7 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
   List<Widget> myPage = [
     DetailsAboutMe(),
     QRHome(),
-    DetailsAboutMe(),
-    DetailsAboutMe(),
-
+    QuoteMainPage(),
     QRReaderPage(), // it goes here
   ];
   @override

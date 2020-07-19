@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'apiQuotes.dart';
-
 class DetailsAboutMe extends StatefulWidget {
   @override
   _DetailsAboutMeState createState() => _DetailsAboutMeState();
@@ -14,7 +12,6 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
     super.initState();
   }
 
-  APIQuotes api = APIQuotes();
   final nameController = new TextEditingController();
   final bioController = new TextEditingController();
   final faveLanguageController = new TextEditingController();
@@ -106,9 +103,7 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                 child: RaisedButton(
                   color: Colors.yellow,
                   child: Text("Submit"),
-                  onPressed: () {
-                    api.getQuote().toString();
-                  },
+                  onPressed: () {},
                 ),
               )
             ],
