@@ -98,7 +98,7 @@ class _QRHomeState extends State<QRHome> {
         qrCodeText = "YEST THANK YOUUU LORD";
         print("YES they are equal");
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => QRReaderPage()));
+            context, MaterialPageRoute(builder: (context) => QuoteMainPage()));
       });
     } else {
       setState(() {

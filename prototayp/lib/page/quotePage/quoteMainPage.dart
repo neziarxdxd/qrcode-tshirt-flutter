@@ -19,7 +19,10 @@ class _QuoteMainPageState extends State<QuoteMainPage> {
         child: Center(
           child: Column(
             children: [
-              Text(api.getQuote().quotes.toString()),
+              Text(
+                api.getQuote().quotes.toString(),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
               Text(api.getQuote().authors.toString()),
             ],
           ),

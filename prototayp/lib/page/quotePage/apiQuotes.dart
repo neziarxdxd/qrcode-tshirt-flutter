@@ -249,8 +249,8 @@ class APIQuotes {
     Quotes("If you can dream it, you can achieve it.", "Zig Ziglar")
   ];
 
-  int randomNumber = Random().nextInt(5);
   Quotes getQuote() {
-    return _quotes[25];
+    int randomNumber = Random().nextInt(_quotes.length - 1);
+    return _quotes[randomNumber];
   }
 }
