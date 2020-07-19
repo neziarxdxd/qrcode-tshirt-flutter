@@ -106,9 +106,7 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                 child: RaisedButton(
                   color: Colors.yellow,
                   child: Text("Submit"),
-                  onPressed: () {
-                    debugPrint(api.getData().toString());
-                  },
+                  onPressed: () {},
                 ),
               )
             ],
