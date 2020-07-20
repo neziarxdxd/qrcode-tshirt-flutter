@@ -52,7 +52,11 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
       backgroundColor: Color(0xFFEFF3FF),
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Center(child: Text('Scan to know me app')),
+        title: Center(
+            child: Text(
+          'Scan to know me app',
+          style: TextStyle(fontFamily: 'Poppins'),
+        )),
       ),
       body: Center(
         child: myPage[selectedIndex],

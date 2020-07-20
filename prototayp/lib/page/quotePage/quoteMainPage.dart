@@ -13,7 +13,10 @@ class _QuoteMainPageState extends State<QuoteMainPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Text("Quotes"),
+        title: Text(
+          "Quotes",
+          style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w700),
+        ),
       ),
       body: Container(
         child: Center(

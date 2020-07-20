@@ -84,6 +84,7 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
               ),
               Text("Tell more about yourself",
                   style: TextStyle(
+                    fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold,
                     fontSize: 25.0,
                   )),
@@ -102,7 +103,11 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                 height: 55,
                 child: RaisedButton(
                   color: Colors.yellow,
-                  child: Text("Submit"),
+                  child: Text(
+                    "Submit",
+                    style: TextStyle(
+                        fontFamily: 'Poppins', fontWeight: FontWeight.w300),
+                  ),
                   onPressed: () {},
                 ),
               )
