@@ -28,7 +28,8 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
             children: [
               Text("Name",
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w700,
                     fontSize: 25.0,
                   )),
               SizedBox(
@@ -41,22 +42,10 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
               SizedBox(
                 height: 30.0,
               ),
-              Text("Profession",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25.0,
-                  )),
-              SizedBox(
-                height: 10.0,
-              ),
-              TextField(
-                  maxLength: 25,
-                  keyboardType: TextInputType.number,
-                  decoration:
-                      InputDecoration(border: const OutlineInputBorder())),
               Text("Bio",
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w700,
                     fontSize: 25.0,
                   )),
               SizedBox(
@@ -70,7 +59,8 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
               ),
               Text("Favorite Programming Language",
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w700,
                     fontSize: 25.0,
                   )),
               SizedBox(
@@ -84,14 +74,14 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
               ),
               Text("Tell more about yourself",
                   style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25.0,
-                  )),
+                      fontFamily: 'Poppins',
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.w700)),
               SizedBox(
                 height: 10.0,
               ),
               TextField(
+                  style: TextStyle(fontFamily: 'Poppins'),
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
                   decoration:
@@ -106,7 +96,7 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                   child: Text(
                     "Submit",
                     style: TextStyle(
-                        fontFamily: 'Poppins', fontWeight: FontWeight.w300),
+                        fontFamily: 'Poppins', fontWeight: FontWeight.w700),
                   ),
                   onPressed: () {},
                 ),

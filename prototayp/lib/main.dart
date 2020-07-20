@@ -55,7 +55,7 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
         title: Center(
             child: Text(
           'Scan to know me app',
-          style: TextStyle(fontFamily: 'Poppins'),
+          style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w700),
         )),
       ),
       body: Center(
