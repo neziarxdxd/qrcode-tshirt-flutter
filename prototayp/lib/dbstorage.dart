@@ -28,6 +28,10 @@ class PersonModel {
       personTellMeMore: this.pTellMeMore
     };
   }
+
+  String toText() {
+    return ("{$pId,$pName,$pBio,$pFavoritePL,$pTellMeMore}");
+  }
 }
 
 class PersonHelper {
@@ -45,9 +49,9 @@ class PersonHelper {
           $personName TEXT,
           $personBio TEXT,
           $personfavoritePL TEXT,
-          $personTellMeMore TEXT
-
-          );
+          $personTellMeMore TEXT);
+      
+      INSERT INTO $tablePerson($personID, $personName, $personBio, $personfavoritePL, $personTellMeMore) VALUES (2344,"none","n","n","n");
      
                
       ''');
@@ -57,6 +61,17 @@ class PersonHelper {
   Future<void> insertPersonDetails(PersonModel task) async {
     try {
       database.insert(tablePerson, task.toMap(),
+          conflictAlgorithm: ConflictAlgorithm.replace);
+    } catch (_) {
+      print(_);
+    }
+  }
+
+  Future<void> updatePersonDetails(PersonModel task) async {
+    try {
+      database.update(tablePerson, task.toMap(),
+          where: '$personID= ?',
+          whereArgs: [task.pId],
           conflictAlgorithm: ConflictAlgorithm.replace);
     } catch (_) {
       print(_);
