@@ -120,6 +120,7 @@ class _QRHomeState extends State<QRHome> {
     }
   }
 
+  // testing the QR, paki delete nalang kapag okay na
   void testTheQR() {
     Navigator.push(
         context,
