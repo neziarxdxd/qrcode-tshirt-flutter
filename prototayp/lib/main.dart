@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dbstorage.dart';
-import 'page/summary/summary.dart';
+import 'page/summary/editInfo.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 import 'page/qrreader/qrreader.dart';
 import 'page/quotePage/quoteMainPage.dart';
+import 'page/summary/summaryInfos.dart';
 
 void main() => runApp(MyApp());
 
@@ -43,7 +44,7 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
   List<Widget> myPage = [
     DetailsAboutMe(),
     QRHome(),
-    QuoteMainPage(),
+
     QRReaderPage(), // it goes here
   ];
   @override
@@ -89,6 +90,15 @@ class QRHome extends StatefulWidget {
 }
 
 class _QRHomeState extends State<QRHome> {
+  void goToSummary() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => PageSummary(
+                  name: "HELLO RAIZEN  thank you LORD",
+                )));
+  }
+
   var outputController = new TextEditingController();
   String qrCodeText;
   Future _scan() async {
@@ -97,18 +107,26 @@ class _QRHomeState extends State<QRHome> {
 
     qrCodeText = outputController.text.toString();
     print(qrCodeText);
-    if (qrCodeText == "you're the best") {
+    if (qrCodeText == "Programmer ako") {
       setState(() {
         qrCodeText = "YEST THANK YOUUU LORD";
         print("YES they are equal");
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => QuoteMainPage()));
+        goToSummary();
       });
     } else {
       setState(() {
         qrCodeText = "ONE MORE LORD";
       });
     }
+  }
+
+  void testTheQR() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => PageSummary(
+                  name: "Raizen",
+                )));
   }
 
   @override
@@ -128,11 +146,15 @@ class _QRHomeState extends State<QRHome> {
             ),
             Text('dsf'),
             FlatButton(
-              child: Text("Go to profile"),
+              child: Text("Check our Free Lectures"),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => QRReaderPage()));
               },
+            ),
+            FlatButton(
+              child: Text("Go TEST PROFILE PIC"),
+              onPressed: () {},
             )
           ],
         ),

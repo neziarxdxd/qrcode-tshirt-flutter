@@ -79,7 +79,9 @@ class PersonHelper {
   }
 
   Future<List<PersonModel>> getAllPersonDetails() async {
-    final List<Map<String, dynamic>> tasks = await database.query(tablePerson);
+    final Database db = await database;
+
+    final List<Map<String, dynamic>> tasks = await db.query(tablePerson);
 
     return List.generate(tasks.length, (index) {
       return PersonModel(
