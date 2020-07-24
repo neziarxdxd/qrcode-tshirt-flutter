@@ -43,8 +43,7 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
 
   List<Widget> myPage = [
     DetailsAboutMe(),
-    QRHome(),
-
+    QRHome(), // lets add
     QRReaderPage(), // it goes here
   ];
   @override
