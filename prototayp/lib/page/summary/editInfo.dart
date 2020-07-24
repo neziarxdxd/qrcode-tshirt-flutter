@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import '../../dbstorage.dart';
+import '../../dbstorage.dart';
 
 class DetailsAboutMe extends StatefulWidget {
   @override
@@ -18,9 +18,9 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
   final faveLanguageController = new TextEditingController();
   final professionController = new TextEditingController();
   final tellMeMoreController = new TextEditingController();
-  // PersonModel personModel;
-  // PersonHelper personHelper = new PersonHelper();
-  // List<PersonModel> listPerson = [];
+  PersonModel personModel;
+  PersonHelper personHelper = new PersonHelper();
+  List<PersonModel> listPerson = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,35 +105,32 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                     style: TextStyle(
                         fontFamily: 'Poppins', fontWeight: FontWeight.w700),
                   ),
-                  onPressed: () {
-                    print("hest");
-                  },
-                  // onPressed: () async {
-                  //   List<PersonModel> person =
-                  //       await personHelper.getAllPersonDetails();
-                  //   setState(() {
-                  //     listPerson = person;
-                  //   });
-                  //   personModel = PersonModel(
-                  //       pBio: bioController.text,
-                  //       pFavoritePL: faveLanguageController.text,
-                  //       pName: nameController.text,
-                  //       pTellMeMore: tellMeMoreController.text);
+                  onPressed: () async {
+                    List<PersonModel> person =
+                        await personHelper.getAllPersonDetails();
+                    setState(() {
+                      listPerson = person;
+                    });
+                    personModel = PersonModel(
+                        pBio: bioController.text,
+                        pFavoritePL: faveLanguageController.text,
+                        pName: nameController.text,
+                        pTellMeMore: tellMeMoreController.text);
 
-                  //   if (listPerson.length <= 1) {
-                  //     personHelper.insertPersonDetails(personModel);
-                  //     print(listPerson[0].toText());
-                  //   } else {
-                  //     personModel = PersonModel(
-                  //         pId: 1,
-                  //         pBio: bioController.text,
-                  //         pFavoritePL: faveLanguageController.text,
-                  //         pName: nameController.text,
-                  //         pTellMeMore: tellMeMoreController.text);
-                  //     personHelper.updatePersonDetails(personModel);
-                  //     print(listPerson[0].toText());
-                  //   }
-                  // },
+                    if (listPerson.length <= 1) {
+                      personHelper.insertPersonDetails(personModel);
+                      print(listPerson[0].toText());
+                    } else {
+                      personModel = PersonModel(
+                          pId: 1,
+                          pBio: bioController.text,
+                          pFavoritePL: faveLanguageController.text,
+                          pName: nameController.text,
+                          pTellMeMore: tellMeMoreController.text);
+                      personHelper.updatePersonDetails(personModel);
+                      print(listPerson[0].toText());
+                    }
+                  },
                 ),
               )
             ],

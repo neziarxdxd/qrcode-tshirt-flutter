@@ -29,7 +29,7 @@ class _PageSummaryState extends State<PageSummary> {
       body: Container(
         child: ListView(
           children: [
-            Text(widget.name),
+            Text("TEST: in jesus name" + widget.name),
             Text("fdkldkf"),
             Text("Bio"),
             Text("dfddf"),

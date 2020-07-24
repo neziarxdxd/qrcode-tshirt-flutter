@@ -90,12 +90,22 @@ class QRHome extends StatefulWidget {
 }
 
 class _QRHomeState extends State<QRHome> {
-  void goToSummary() {
+  PersonModel personModel;
+  PersonHelper personHelper = new PersonHelper();
+  List<PersonModel> listPerson = [];
+  Future<void> goToSummary() async {
+    List<PersonModel> person = await personHelper.getAllPersonDetails();
+    setState(() {
+      listPerson = person;
+    });
+    print(listPerson[0].toText());
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => PageSummary(
-                  name: "HELLO RAIZEN  thank you LORD",
+                  name: listPerson[0].pName,
+                  bio: listPerson[0].pBio,
+                  favoriteLanguage: listPerson[0].pFavoritePL,
                 )));
   }
 
@@ -155,7 +165,9 @@ class _QRHomeState extends State<QRHome> {
             ),
             FlatButton(
               child: Text("Go TEST PROFILE PIC"),
-              onPressed: () {},
+              onPressed: () {
+                goToSummary();
+              },
             )
           ],
         ),
