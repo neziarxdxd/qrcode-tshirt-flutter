@@ -29,12 +29,14 @@ class _PageSummaryState extends State<PageSummary> {
       body: Container(
         child: ListView(
           children: [
-            Text(widget.name.toString()),
+            Text(
+              widget.name.toString(),
+              style:
+                  TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.bold),
+            ),
             Text(widget.bio.toString()),
             Text(widget.favoriteLanguage.toString()),
             Text(widget.tellMeMore.toString()),
-            Text("dfdfd"),
-            Text("Gdkfdkfkd")
           ],
         ),
       ),
