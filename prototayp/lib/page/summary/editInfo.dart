@@ -117,10 +117,10 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                         pName: nameController.text,
                         pTellMeMore: tellMeMoreController.text);
 
-                    if (listPerson.length <= 1) {
+                    if (listPerson.length < 1) {
                       personHelper.insertPersonDetails(personModel);
-                      print(listPerson[0].toText());
                     } else {
+                      print(listPerson[0].toText());
                       personModel = PersonModel(
                           pId: 1,
                           pBio: bioController.text,
@@ -129,6 +129,7 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                           pTellMeMore: tellMeMoreController.text);
                       personHelper.updatePersonDetails(personModel);
                       print(listPerson[0].toText());
+                      print(listPerson.length);
                     }
                   },
                 ),

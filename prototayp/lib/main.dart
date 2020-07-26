@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'dbstorage.dart';
 import 'page/summary/editInfo.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
-import 'page/qrreader/qrreader.dart';
-import 'page/quotePage/quoteMainPage.dart';
+import 'page/qrreader/freeLecture.dart';
+
 import 'page/summary/summaryInfos.dart';
 
 void main() => runApp(MyApp());
@@ -44,7 +44,7 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
   List<Widget> myPage = [
     DetailsAboutMe(),
     QRHome(), // lets add
-    QRReaderPage(), // it goes here
+    FreeLecture(), // it goes here
   ];
   @override
   Widget build(BuildContext context) {
@@ -92,20 +92,30 @@ class _QRHomeState extends State<QRHome> {
   PersonModel personModel;
   PersonHelper personHelper = new PersonHelper();
   List<PersonModel> listPerson = [];
+  // this will show the Details after QR
   Future<void> goToSummary() async {
     List<PersonModel> person = await personHelper.getAllPersonDetails();
     setState(() {
       listPerson = person;
     });
-    print(listPerson[0].toText());
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => PageSummary(
-                  name: listPerson[0].pName,
-                  bio: listPerson[0].pBio,
-                  favoriteLanguage: listPerson[0].pFavoritePL,
-                )));
+
+    if (person.length < 1) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => DetailsAboutMe()));
+
+      print("yes");
+    } else {
+      print(listPerson[0].toText());
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => PageSummary(
+                    name: listPerson[0].pName,
+                    bio: listPerson[0].pBio,
+                    tellMeMore: listPerson[0].pTellMeMore,
+                    favoriteLanguage: listPerson[0].pFavoritePL,
+                  )));
+    }
   }
 
   var outputController = new TextEditingController();
@@ -151,7 +161,7 @@ class _QRHomeState extends State<QRHome> {
               child: Text("Check our Free Lectures"),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => QRReaderPage()));
+                    MaterialPageRoute(builder: (context) => FreeLecture()));
               },
             ),
             FlatButton(

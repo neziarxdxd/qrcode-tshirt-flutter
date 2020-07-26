@@ -3,12 +3,12 @@ import 'package:url_launcher/url_launcher.dart';
 
 TextEditingController outputController;
 
-class QRReaderPage extends StatefulWidget {
+class FreeLecture extends StatefulWidget {
   @override
-  _QRReaderPageState createState() => _QRReaderPageState();
+  _FreeLectureState createState() => _FreeLectureState();
 }
 
-class _QRReaderPageState extends State<QRReaderPage> {
+class _FreeLectureState extends State<FreeLecture> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
