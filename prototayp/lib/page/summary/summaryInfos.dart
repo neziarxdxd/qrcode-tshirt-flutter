@@ -29,17 +29,31 @@ class _PageSummaryState extends State<PageSummary> {
       body: Container(
         child: ListView(
           children: [
-            Text(
+            TextsHeader(
               widget.name.toString(),
-              style:
-                  TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.bold),
             ),
-            Text(widget.bio.toString()),
-            Text(widget.favoriteLanguage.toString()),
-            Text(widget.tellMeMore.toString()),
+            TextsHeader(widget.bio.toString()),
+            TextsHeader(widget.favoriteLanguage.toString()),
+            TextsHeader(widget.tellMeMore),
           ],
         ),
       ),
     );
+  }
+}
+
+class TextsHeader extends StatefulWidget {
+  final String titleHead;
+  const TextsHeader(this.titleHead);
+
+  @override
+  _TextsHeaderState createState() => _TextsHeaderState();
+}
+
+class _TextsHeaderState extends State<TextsHeader> {
+  @override
+  Widget build(BuildContext context) {
+    return Text(widget.titleHead.toString(),
+        style: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w500));
   }
 }
