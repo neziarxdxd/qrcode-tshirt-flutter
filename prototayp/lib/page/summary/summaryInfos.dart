@@ -23,19 +23,30 @@ class _PageSummaryState extends State<PageSummary> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.settings),
+            ),
+          )
+        ],
         backgroundColor: Colors.blue,
         title: Text('My Profile'),
       ),
       body: Container(
-        child: ListView(
-          children: [
-            TextsHeader(
-              widget.name.toString(),
-            ),
-            TextsHeader(widget.bio.toString()),
-            TextsHeader(widget.favoriteLanguage.toString()),
-            TextsHeader(widget.tellMeMore),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.only(top: 30),
+          child: ListView(
+            children: [
+              TextsHeader(widget.name.toString(), "Name:"),
+              TextsHeader(widget.bio.toString(), "Bio:"),
+              TextsHeader(
+                  widget.favoriteLanguage.toString(), "Favorite Language:"),
+              TextsHeader(widget.tellMeMore, "About Me: "),
+            ],
+          ),
         ),
       ),
     );
@@ -43,8 +54,9 @@ class _PageSummaryState extends State<PageSummary> {
 }
 
 class TextsHeader extends StatefulWidget {
-  final String titleHead;
-  const TextsHeader(this.titleHead);
+  final String titleContent;
+  final String titleHeader;
+  const TextsHeader(this.titleContent, this.titleHeader);
 
   @override
   _TextsHeaderState createState() => _TextsHeaderState();
@@ -53,7 +65,26 @@ class TextsHeader extends StatefulWidget {
 class _TextsHeaderState extends State<TextsHeader> {
   @override
   Widget build(BuildContext context) {
-    return Text(widget.titleHead.toString(),
-        style: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w500));
+    return Padding(
+      padding: const EdgeInsets.only(left: 30, bottom: 10),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            widget.titleHeader,
+            style: TextStyle(
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w900,
+                fontSize: 20.0),
+          ),
+          Text(widget.titleContent.toString(),
+              style: TextStyle(
+                  color: Colors.black87,
+                  fontFamily: "Poppins",
+                  fontSize: 25.0)),
+        ],
+      ),
+    );
   }
 }

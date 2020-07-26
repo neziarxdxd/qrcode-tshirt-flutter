@@ -40,6 +40,7 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                 height: 10.0,
               ),
               TextField(
+                  style: TextStyle(fontFamily: 'Poppins'),
                   controller: nameController,
                   decoration:
                       InputDecoration(border: const OutlineInputBorder())),
@@ -56,6 +57,7 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                 height: 10.0,
               ),
               TextField(
+                  style: TextStyle(fontFamily: 'Poppins'),
                   controller: bioController,
                   decoration:
                       InputDecoration(border: const OutlineInputBorder())),
@@ -72,6 +74,7 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                 height: 10.0,
               ),
               TextField(
+                  style: TextStyle(fontFamily: 'Poppins'),
                   controller: faveLanguageController,
                   decoration:
                       InputDecoration(border: const OutlineInputBorder())),
