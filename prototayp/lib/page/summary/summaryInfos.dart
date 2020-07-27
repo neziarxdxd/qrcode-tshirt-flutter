@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'editInfo.dart';
 
 class PageSummary extends StatefulWidget {
   final String name;
@@ -27,7 +28,17 @@ class _PageSummaryState extends State<PageSummary> {
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DetailsAboutMe(
+                              bio: widget.bio,
+                              name: widget.name,
+                              faveLanguage: widget.favoriteLanguage,
+                              tellMeMore: widget.tellMeMore,
+                            )));
+              },
               icon: Icon(Icons.settings),
             ),
           )

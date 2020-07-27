@@ -3,6 +3,14 @@ import 'package:flutter/services.dart';
 import '../../dbstorage.dart';
 
 class DetailsAboutMe extends StatefulWidget {
+  String name = "";
+  String bio = "";
+  String faveLanguage = "";
+  String prof = "";
+  String tellMeMore = "";
+
+  DetailsAboutMe(
+      {this.name, this.bio, this.faveLanguage, this.prof, this.tellMeMore});
   @override
   _DetailsAboutMeState createState() => _DetailsAboutMeState();
 }
@@ -23,6 +31,8 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
   List<PersonModel> listPerson = [];
   @override
   Widget build(BuildContext context) {
+    nameController.text = (widget.name == null) ? "okay sya" : widget.name;
+    bioController.text = (widget.bio == null) ? "okay na" : widget.bio;
     return Scaffold(
       backgroundColor: Color(0xFFEFF3FF),
       body: Container(
