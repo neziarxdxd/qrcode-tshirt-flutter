@@ -29,7 +29,7 @@ class _PageSummaryState extends State<PageSummary> {
             padding: const EdgeInsets.only(right: 20),
             child: IconButton(
               onPressed: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                         builder: (context) => DetailsAboutMe(

@@ -153,6 +153,10 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                       personHelper.updatePersonDetails(personModel);
                       print(listPerson[0].toText());
                       print(listPerson.length);
+
+                      Scaffold.of(context).showSnackBar(new SnackBar(
+                        content: Text("Yay it's now updated"),
+                      ));
                     }
                   },
                 ),
