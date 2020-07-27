@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../dbstorage.dart';
 
+// ignore: must_be_immutable
 class DetailsAboutMe extends StatefulWidget {
   String name = "";
   String bio = "";
