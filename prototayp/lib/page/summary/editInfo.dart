@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:prototayp/page/summary/summaryInfos.dart';
 import '../../dbstorage.dart';
 
 // ignore: must_be_immutable
@@ -7,11 +8,10 @@ class DetailsAboutMe extends StatefulWidget {
   String name = "";
   String bio = "";
   String faveLanguage = "";
-  String prof = "";
+
   String tellMeMore = "";
 
-  DetailsAboutMe(
-      {this.name, this.bio, this.faveLanguage, this.prof, this.tellMeMore});
+  DetailsAboutMe({this.name, this.bio, this.faveLanguage, this.tellMeMore});
   @override
   _DetailsAboutMeState createState() => _DetailsAboutMeState();
 }
@@ -25,15 +25,20 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
   final nameController = new TextEditingController();
   final bioController = new TextEditingController();
   final faveLanguageController = new TextEditingController();
-  final professionController = new TextEditingController();
+
   final tellMeMoreController = new TextEditingController();
   PersonModel personModel;
   PersonHelper personHelper = new PersonHelper();
   List<PersonModel> listPerson = [];
   @override
   Widget build(BuildContext context) {
-    nameController.text = (widget.name == null) ? "okay sya" : widget.name;
-    bioController.text = (widget.bio == null) ? "okay na" : widget.bio;
+    nameController.text = (widget.name == null) ? "" : widget.name;
+    bioController.text = (widget.bio == null) ? "" : widget.bio;
+    faveLanguageController.text =
+        (widget.faveLanguage == null) ? "" : widget.faveLanguage;
+    tellMeMoreController.text =
+        (widget.tellMeMore == null) ? "" : widget.tellMeMore;
+
     return Scaffold(
       backgroundColor: Color(0xFFEFF3FF),
       body: Container(
@@ -133,6 +138,10 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
 
                     if (listPerson.length < 1) {
                       personHelper.insertPersonDetails(personModel);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PageSummary()));
                     } else {
                       print(listPerson[0].toText());
                       personModel = PersonModel(
