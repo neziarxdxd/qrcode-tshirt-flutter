@@ -42,9 +42,9 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
   }
 
   List<Widget> myPage = [
-    DetailsAboutMe(),
     QRHome(), // lets add
-    FreeLecture(), // it goes here
+    FreeLecture(),
+    DetailsAboutMe(), // it goes here
   ];
   @override
   Widget build(BuildContext context) {
@@ -67,10 +67,10 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
                 icon: Icon(
                   Icons.home,
                 ),
-                title: Text('QR Scan')),
+                title: Text('Scan Me')),
             BottomNavigationBarItem(
               icon: Icon(Icons.featured_video),
-              title: Text('Gift'),
+              title: Text('Scan Inspired'),
             ),
             BottomNavigationBarItem(
                 icon: Icon(Icons.add), title: Text('About Us')),
@@ -102,8 +102,6 @@ class _QRHomeState extends State<QRHome> {
     if (person.length < 1) {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => DetailsAboutMe()));
-
-      print("yes");
     } else {
       print(listPerson[0].toText());
       Navigator.push(
@@ -145,34 +143,25 @@ class _QRHomeState extends State<QRHome> {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Column(
-          children: [
-            FlatButton(
-              color: Colors.amberAccent,
-              child: Text("Scan QR"),
-              onPressed: () {
-                setState(() {
-                  _scan();
-                });
-              },
+          child: ButtonTheme(
+        height: 70,
+        minWidth: 200,
+        child: FlatButton.icon(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.0),
             ),
-            Text('dsf'),
-            FlatButton(
-              child: Text("Check our Free Lectures"),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => FreeLecture()));
-              },
-            ),
-            FlatButton(
-              child: Text("Go TEST PROFILE PIC"),
-              onPressed: () {
-                goToSummary();
-              },
-            )
-          ],
-        ),
-      ),
+            color: Colors.amber,
+            onPressed: () {
+              setState(() {
+                _scan();
+              });
+            },
+            icon: Icon(Icons.add_a_photo),
+            label: Text(
+              "Open QR Scanner",
+              style: TextStyle(fontFamily: "Poppins"),
+            )),
+      )),
     );
   }
 }

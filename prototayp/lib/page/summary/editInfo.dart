@@ -40,128 +40,141 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
         (widget.tellMeMore == null) ? "" : widget.tellMeMore;
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Update Information"),
+      ),
       backgroundColor: Color(0xFFEFF3FF),
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: ListView(
-            children: [
-              Text("Name",
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w700,
-                    fontSize: 25.0,
-                  )),
-              SizedBox(
-                height: 10.0,
-              ),
-              TextField(
-                  style: TextStyle(fontFamily: 'Poppins'),
-                  controller: nameController,
-                  decoration:
-                      InputDecoration(border: const OutlineInputBorder())),
-              SizedBox(
-                height: 30.0,
-              ),
-              Text("Bio",
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w700,
-                    fontSize: 25.0,
-                  )),
-              SizedBox(
-                height: 10.0,
-              ),
-              TextField(
-                  style: TextStyle(fontFamily: 'Poppins'),
-                  controller: bioController,
-                  decoration:
-                      InputDecoration(border: const OutlineInputBorder())),
-              SizedBox(
-                height: 30.0,
-              ),
-              Text("Favorite Programming Language",
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w700,
-                    fontSize: 25.0,
-                  )),
-              SizedBox(
-                height: 10.0,
-              ),
-              TextField(
-                  style: TextStyle(fontFamily: 'Poppins'),
-                  controller: faveLanguageController,
-                  decoration:
-                      InputDecoration(border: const OutlineInputBorder())),
-              SizedBox(
-                height: 30.0,
-              ),
-              Text("Tell more about yourself",
-                  style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.w700)),
-              SizedBox(
-                height: 10.0,
-              ),
-              TextField(
-                  controller: tellMeMoreController,
-                  style: TextStyle(fontFamily: 'Poppins'),
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
-                  decoration:
-                      InputDecoration(border: const OutlineInputBorder())),
-              SizedBox(
-                height: 30.0,
-              ),
-              ButtonTheme(
-                height: 55,
-                child: RaisedButton(
-                  color: Colors.yellow,
-                  child: Text(
-                    "Submit",
+      body: Builder(
+        builder: (context) => Container(
+          child: Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: ListView(
+              children: [
+                Text("Name",
                     style: TextStyle(
-                        fontFamily: 'Poppins', fontWeight: FontWeight.w700),
-                  ),
-                  onPressed: () async {
-                    List<PersonModel> person =
-                        await personHelper.getAllPersonDetails();
-                    setState(() {
-                      listPerson = person;
-                    });
-                    personModel = PersonModel(
-                        pBio: bioController.text,
-                        pFavoritePL: faveLanguageController.text,
-                        pName: nameController.text,
-                        pTellMeMore: tellMeMoreController.text);
-
-                    if (listPerson.length < 1) {
-                      personHelper.insertPersonDetails(personModel);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PageSummary()));
-                    } else {
-                      print(listPerson[0].toText());
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w700,
+                      fontSize: 25.0,
+                    )),
+                SizedBox(
+                  height: 10.0,
+                ),
+                TextField(
+                    style: TextStyle(fontFamily: 'Poppins'),
+                    controller: nameController,
+                    decoration:
+                        InputDecoration(border: const OutlineInputBorder())),
+                SizedBox(
+                  height: 30.0,
+                ),
+                Text("Bio",
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w700,
+                      fontSize: 25.0,
+                    )),
+                SizedBox(
+                  height: 10.0,
+                ),
+                TextField(
+                    style: TextStyle(fontFamily: 'Poppins'),
+                    controller: bioController,
+                    decoration:
+                        InputDecoration(border: const OutlineInputBorder())),
+                SizedBox(
+                  height: 30.0,
+                ),
+                Text("Favorite Programming Language",
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w700,
+                      fontSize: 25.0,
+                    )),
+                SizedBox(
+                  height: 10.0,
+                ),
+                TextField(
+                    style: TextStyle(fontFamily: 'Poppins'),
+                    controller: faveLanguageController,
+                    decoration:
+                        InputDecoration(border: const OutlineInputBorder())),
+                SizedBox(
+                  height: 30.0,
+                ),
+                Text("Tell more about yourself",
+                    style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.w700)),
+                SizedBox(
+                  height: 10.0,
+                ),
+                TextField(
+                    controller: tellMeMoreController,
+                    style: TextStyle(fontFamily: 'Poppins'),
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
+                    decoration:
+                        InputDecoration(border: const OutlineInputBorder())),
+                SizedBox(
+                  height: 30.0,
+                ),
+                ButtonTheme(
+                  height: 55,
+                  child: RaisedButton(
+                    color: Colors.yellow,
+                    child: Text(
+                      "Submit",
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: FontWeight.w700),
+                    ),
+                    onPressed: () async {
+                      List<PersonModel> person =
+                          await personHelper.getAllPersonDetails();
+                      setState(() {
+                        listPerson = person;
+                      });
                       personModel = PersonModel(
-                          pId: 1,
                           pBio: bioController.text,
                           pFavoritePL: faveLanguageController.text,
                           pName: nameController.text,
                           pTellMeMore: tellMeMoreController.text);
-                      personHelper.updatePersonDetails(personModel);
-                      print(listPerson[0].toText());
-                      print(listPerson.length);
 
-                      Scaffold.of(context).showSnackBar(new SnackBar(
-                        content: Text("Yay it's now updated"),
-                      ));
-                    }
-                  },
-                ),
-              )
-            ],
+                      if (listPerson.length < 1) {
+                        personHelper.insertPersonDetails(personModel);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PageSummary()));
+                      } else {
+                        print(listPerson[0].toText());
+                        personModel = PersonModel(
+                            pId: 1,
+                            pBio: bioController.text,
+                            pFavoritePL: faveLanguageController.text,
+                            pName: nameController.text,
+                            pTellMeMore: tellMeMoreController.text);
+                        personHelper.updatePersonDetails(personModel);
+                        print(listPerson[0].toText());
+                        print(listPerson.length);
+
+                        Scaffold.of(context).showSnackBar(new SnackBar(
+                          content: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 30),
+                                child: Icon(Icons.thumb_up),
+                              ),
+                              Text("Yay it's now updated"),
+                            ],
+                          ),
+                        ));
+                      }
+                    },
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
