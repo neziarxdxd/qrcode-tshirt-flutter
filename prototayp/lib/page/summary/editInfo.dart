@@ -142,10 +142,17 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
 
                       if (listPerson.length < 1) {
                         personHelper.insertPersonDetails(personModel);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PageSummary()));
+                        Scaffold.of(context).showSnackBar(new SnackBar(
+                          content: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 30),
+                                child: Icon(Icons.thumb_up),
+                              ),
+                              Text("Yay it's now added"),
+                            ],
+                          ),
+                        ));
                       } else {
                         print(listPerson[0].toText());
                         personModel = PersonModel(

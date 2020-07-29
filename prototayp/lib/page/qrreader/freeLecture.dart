@@ -27,6 +27,7 @@ class _FrontPageQuotesState extends State<FrontPageQuotes> {
       setState(() {
         qrCodeText = "YEST THANK YOUUU LORD";
         print("YES they are equal");
+        goToQuotePage();
       });
     }
   }
@@ -35,13 +36,24 @@ class _FrontPageQuotesState extends State<FrontPageQuotes> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            setState(() {
-              _scan();
-            });
-          },
-          child: Text('Show Flutter homepage'),
+        child: ButtonTheme(
+          height: 70,
+          minWidth: 200,
+          child: FlatButton.icon(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+              ),
+              color: Colors.amber,
+              onPressed: () {
+                setState(() {
+                  _scan();
+                });
+              },
+              icon: Icon(Icons.add_a_photo),
+              label: Text(
+                "Scan to get Quote",
+                style: TextStyle(fontFamily: "Poppins"),
+              )),
         ),
       ),
     );

@@ -158,7 +158,7 @@ class _QRHomeState extends State<QRHome> {
             },
             icon: Icon(Icons.add_a_photo),
             label: Text(
-              "Open QR Scanner",
+              "Scan to know me",
               style: TextStyle(fontFamily: "Poppins"),
             )),
       )),
