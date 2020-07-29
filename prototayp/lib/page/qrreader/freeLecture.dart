@@ -4,12 +4,12 @@ import '../quotePage/quoteMainPage.dart';
 
 TextEditingController outputController;
 
-class FreeLecture extends StatefulWidget {
+class FrontPageQuotes extends StatefulWidget {
   @override
-  _FreeLectureState createState() => _FreeLectureState();
+  _FrontPageQuotesState createState() => _FrontPageQuotesState();
 }
 
-class _FreeLectureState extends State<FreeLecture> {
+class _FrontPageQuotesState extends State<FrontPageQuotes> {
   void goToQuotePage() {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => QuoteMainPage()));
