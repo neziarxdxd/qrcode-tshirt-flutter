@@ -43,7 +43,7 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
 
   List<Widget> myPage = [
     QRHome(), // lets add
-    FreeLecture(),
+    FrontPageQuotes(),
     DetailsAboutMe(), // it goes here
   ];
   @override
