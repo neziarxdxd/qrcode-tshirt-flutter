@@ -11,6 +11,7 @@ class _QuoteMainPageState extends State<QuoteMainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFEFF3FF),
       appBar: AppBar(
         backgroundColor: Colors.black87,
         title: Text(
@@ -22,27 +23,25 @@ class _QuoteMainPageState extends State<QuoteMainPage> {
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: ListView(children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    ''' "${api.getQuote().quotes.toString()}" ''',
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Poppins"),
-                  ),
-                  Text(
-                    api.getQuote().authors.toString(),
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Poppins"),
-                  ),
-                ],
-              ),
-            ]),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  ''' "${api.getQuote().quotes.toString()}" ''',
+                  style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Poppins"),
+                ),
+                Text(
+                  api.getQuote().authors.toString(),
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Poppins"),
+                ),
+              ],
+            ),
           ),
         ),
       ),

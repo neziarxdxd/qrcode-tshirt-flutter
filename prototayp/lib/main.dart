@@ -45,7 +45,7 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
   List<Widget> myPage = [
     QRHome(), // lets add
     FrontPageQuotes(),
-    QuoteMainPage(), // it goes here
+    AboutUsPage() // it goes here
   ];
   @override
   Widget build(BuildContext context) {
@@ -125,7 +125,7 @@ class _QRHomeState extends State<QRHome> {
 
     qrCodeText = outputController.text.toString();
     print(qrCodeText);
-    if (qrCodeText == "Programmer ako") {
+    if (qrCodeText == "Programmer Ako") {
       setState(() {
         qrCodeText = "YEST THANK YOUUU LORD";
         print("YES they are equal");

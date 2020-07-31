@@ -9,6 +9,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFEFF3FF),
       body: Padding(
         padding:
             const EdgeInsets.only(left: 12.0, right: 12.0, top: 8, bottom: 8),
