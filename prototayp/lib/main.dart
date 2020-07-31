@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:prototayp/page/quotePage/quoteMainPage.dart';
 import 'dbstorage.dart';
 import 'page/summary/editInfo.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 import 'page/qrreader/freeLecture.dart';
-
+import 'page/qrreader/aboutus.dart';
 import 'page/summary/summaryInfos.dart';
 
 void main() => runApp(MyApp());
@@ -44,14 +45,14 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
   List<Widget> myPage = [
     QRHome(), // lets add
     FrontPageQuotes(),
-    DetailsAboutMe(), // it goes here
+    QuoteMainPage(), // it goes here
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFEFF3FF),
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black87,
         title: Center(
             child: Text(
           'Scan to know me app',
@@ -65,17 +66,17 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
           items: [
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.home,
+                  Icons.aspect_ratio,
                 ),
                 title: Text('Scan Me')),
             BottomNavigationBarItem(
-              icon: Icon(Icons.featured_video),
+              icon: Icon(Icons.wb_incandescent),
               title: Text('Scan Inspired'),
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.add), title: Text('About Us')),
+                icon: Icon(Icons.account_circle), title: Text('About Us')),
           ],
-          selectedItemColor: Color(0xff28306d),
+          selectedItemColor: Colors.black87,
           unselectedItemColor: Colors.black26,
           currentIndex: selectedIndex,
           onTap: _onItemTapped),
@@ -150,16 +151,19 @@ class _QRHomeState extends State<QRHome> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18.0),
             ),
-            color: Colors.amber,
+            color: Colors.black87,
             onPressed: () {
               setState(() {
                 _scan();
               });
             },
-            icon: Icon(Icons.add_a_photo),
+            icon: Icon(
+              Icons.add_a_photo,
+              color: Colors.white,
+            ),
             label: Text(
               "Scan to know me",
-              style: TextStyle(fontFamily: "Poppins"),
+              style: TextStyle(fontFamily: "Poppins", color: Colors.white),
             )),
       )),
     );

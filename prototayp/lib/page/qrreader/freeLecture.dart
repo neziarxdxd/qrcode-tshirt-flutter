@@ -35,6 +35,7 @@ class _FrontPageQuotesState extends State<FrontPageQuotes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFEFF3FF),
       body: Center(
         child: ButtonTheme(
           height: 70,
@@ -43,16 +44,16 @@ class _FrontPageQuotesState extends State<FrontPageQuotes> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
               ),
-              color: Colors.amber,
+              color: Colors.black87,
               onPressed: () {
                 setState(() {
                   _scan();
                 });
               },
-              icon: Icon(Icons.add_a_photo),
+              icon: Icon(Icons.add_a_photo, color: Colors.white),
               label: Text(
                 "Scan to get Quote",
-                style: TextStyle(fontFamily: "Poppins"),
+                style: TextStyle(fontFamily: "Poppins", color: Colors.white),
               )),
         ),
       ),

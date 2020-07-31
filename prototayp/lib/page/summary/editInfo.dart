@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:prototayp/page/summary/summaryInfos.dart';
+
 import '../../dbstorage.dart';
 
 // ignore: must_be_immutable
@@ -41,7 +41,11 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Update Information"),
+        backgroundColor: Colors.black87,
+        title: Text(
+          "Update Information",
+          style: TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w700),
+        ),
       ),
       backgroundColor: Color(0xFFEFF3FF),
       body: Builder(
@@ -120,13 +124,29 @@ class _DetailsAboutMeState extends State<DetailsAboutMe> {
                   height: 30.0,
                 ),
                 ButtonTheme(
-                  height: 55,
-                  child: RaisedButton(
-                    color: Colors.yellow,
-                    child: Text(
-                      "Submit",
+                  height: 70,
+                  minWidth: 200,
+                  /***
+                   
+        ,
+        child: FlatButton.icon(
+           ,
+            ) 
+                    
+                   
+                   * ** */
+                  child: FlatButton.icon(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                    ),
+                    icon: Icon(Icons.send, color: Colors.white),
+                    color: Colors.black87,
+                    label: Text(
+                      "    Submit",
                       style: TextStyle(
-                          fontFamily: 'Poppins', fontWeight: FontWeight.w700),
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white),
                     ),
                     onPressed: () async {
                       List<PersonModel> person =

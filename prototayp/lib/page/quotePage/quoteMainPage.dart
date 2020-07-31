@@ -12,7 +12,7 @@ class _QuoteMainPageState extends State<QuoteMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.black87,
         title: Text(
           "Quotes",
           style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w700),
@@ -20,14 +20,29 @@ class _QuoteMainPageState extends State<QuoteMainPage> {
       ),
       body: Container(
         child: Center(
-          child: Column(
-            children: [
-              Text(
-                api.getQuote().quotes.toString(),
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ListView(children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    ''' "${api.getQuote().quotes.toString()}" ''',
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Poppins"),
+                  ),
+                  Text(
+                    api.getQuote().authors.toString(),
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Poppins"),
+                  ),
+                ],
               ),
-              Text(api.getQuote().authors.toString()),
-            ],
+            ]),
           ),
         ),
       ),
