@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:prototayp/page/quotePage/quoteMainPage.dart';
 import 'dbstorage.dart';
 import 'page/summary/editInfo.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
