@@ -125,7 +125,7 @@ class _QRHomeState extends State<QRHome> {
 
     qrCodeText = outputController.text.toString();
     print(qrCodeText);
-    if (qrCodeText == "Programmer Ako") {
+    if (qrCodeText == "http://bit.ly/ProudProgrammerDeveloper") {
       setState(() {
         qrCodeText = "YEST THANK YOUUU LORD";
         print("YES they are equal");
