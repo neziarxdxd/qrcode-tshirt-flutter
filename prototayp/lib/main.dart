@@ -59,8 +59,10 @@ class _DropdownScreenStateState extends State<DropdownScreenState> {
           style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w700),
         )),
       ),
-      body: Center(
-        child: myPage[selectedIndex],
+      body: Builder(
+        builder: (context) => Center(
+          child: myPage[selectedIndex],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
           items: [
@@ -125,7 +127,8 @@ class _QRHomeState extends State<QRHome> {
 
     qrCodeText = outputController.text.toString();
     print(qrCodeText);
-    if (qrCodeText == "http://bit.ly/ProudProgrammerDeveloper") {
+
+    if (qrCodeText == ('bit.ly/ProudProgrammerDeveloper').toString()) {
       setState(() {
         qrCodeText = "YEST THANK YOUUU LORD";
         print("YES they are equal");
@@ -133,7 +136,17 @@ class _QRHomeState extends State<QRHome> {
       });
     } else {
       setState(() {
-        qrCodeText = "ONE MORE LORD";
+        Scaffold.of(context).showSnackBar(new SnackBar(
+          content: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 30),
+                child: Icon(Icons.thumb_up),
+              ),
+              Text(qrCodeText),
+            ],
+          ),
+        ));
       });
     }
   }

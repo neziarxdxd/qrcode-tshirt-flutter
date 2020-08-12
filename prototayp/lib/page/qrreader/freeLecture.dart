@@ -23,7 +23,7 @@ class _FrontPageQuotesState extends State<FrontPageQuotes> {
 
     qrCodeText = outputController.text.toString();
     print(qrCodeText);
-    if (qrCodeText == "Programmer Ako") {
+    if (qrCodeText == ('bit.ly/ProudProgrammerDeveloper').toString()) {
       setState(() {
         qrCodeText = "YEST THANK YOUUU LORD";
         print("YES they are equal");
