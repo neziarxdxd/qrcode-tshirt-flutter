@@ -74,7 +74,7 @@ class PersonHelper {
           whereArgs: [task.pId],
           conflictAlgorithm: ConflictAlgorithm.replace);
     } catch (_) {
-      print(_);
+      print("got error" + _);
     }
   }
 
